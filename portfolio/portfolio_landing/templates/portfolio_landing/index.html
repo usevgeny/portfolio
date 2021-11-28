@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="view-port" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %} " />
+
+</head>
+<body>
+<div class="toggle" onclick="toggleMenu()"></div>
+
+<section class="banner" id="home">
+    <div class="imgSidebar">
+        <img src="{% static 'images/bg.jpg'%}">
+    </div>
+    <div class="contentBx">
+        <div>
+        <h5 class="logoText">My_Portfolio</h5>
+            </div>
+        <div>
+            <h4><span>Hello</span> I'm </h4>
+            <h2>Evgeny USACHEV</h2>
+            <h4> I'm a Back End Developer.</h4>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus pharetra dapibus. Sed egestas eget purus quis tristique. Aenean aliquet nisl nec facilisis tincidunt. Mauris mattis massa convallis semper rutrum. Proin efficitur porta massa, id ultricies ex varius a.
+                <br><br>
+            <a href="#about" class="btn">About Me</a>
+
+        </div>
+
+        <ul class="sci">
+        <li><a href="https://www.linkedin.com/in/evgeny-usachev-ba071a196"><img src="{% static 'images/linkedin-square.png' %}"  width="50px;"></a></li>
+        <li><a href="https://instagram.com/usevgeny/"><img src="{% static 'images/black-instagram.png' %}"  width="50px;"></a></li>
+        <li><a href="https://github.com/usevgeny"><img  src="{% static 'images/github.png' %}" width="50px;"></a></li>
+
+
+    </ul>
+
+    </div>
+
+
+
+
+</section>
+<section class="about" id="about">
+
+    <div class="title white">
+        <h2>About</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+    </div>
+    <div class="content">
+        <div class="textBx1">
+            <p>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus pharetra dapibus. Sed egestas eget purus quis tristique. Aenean aliquet nisl nec facilisis tincidunt. Mauris mattis massa convallis semper rutrum. Proin efficitur porta massa, id ultricies ex varius a.
+                <br><br>Phasellus tristique, orci aliquet ornare sollicitudin, nibh lacus tincidunt nisi, eu hendrerit justo magna non tortor. Curabitur nec malesuada massa, et porttitor metus. In et ultricies orci. Integer lobortis tristique dictum.
+            </p>
+        </div>
+        <div class="imgBx">
+            <img  src="{% static 'images/bg1.jpg'%}">
+
+        </div>
+
+    </div>
+</section>
+<section class="services" id="services">
+
+    <div class="title">
+
+        <h2>Services</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+    </div>
+    <div class="content">
+        <div class="servicesBx">
+            <img  src="{% static 'images/icon1.png'%}" >
+            <h2>Web Design</h2>
+                   <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+        </div>
+
+    <div class="servicesBx">
+            <img  src="{% static 'images/icon2.png'%}">
+            <h2>Video Editing</h2>
+                   <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+        </div>
+
+    <div class="servicesBx">
+            <img src="{% static 'images/icon3.png'%}">
+            <h2>Content Writing</h2>
+                   <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+        </div>
+
+
+        <div class="servicesBx">
+            <img  src="{% static 'images/github.png'%}" >
+            <h2>Photography</h2>
+                   <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+        </div>
+
+        <div class="servicesBx">
+            <img  src="{% static 'images/icon4.png'%}">
+            <h2>Photography</h2>
+                   <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+        </div>
+        <div class="servicesBx">
+            <img  src="{% static 'images/icon4.png'%}">
+            <h2>Photography</h2>
+                   <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+        </div>
+        <div class="servicesBx">
+            <img src="{% static 'images/icon4.png'%}">
+            <h2>Photography</h2>
+                   <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+        </div>
+
+            <div class="servicesBx">
+            <img src="{% static 'images/icon4.png'%}">
+            <h2>Web App development</h2>
+                   <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+        </div>
+    </div>
+
+
+</section>
+<section class="work" id="work">
+ <div class="title">
+        <h2>Recent works</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+    </div>
+    <div class="content">
+
+<div class="workBx">
+    <div class="imgBx">
+        <img src="{% static 'images/img1.jpg'%}">
+    </div>
+    <div class="textBx">
+        <h3>Algorito</h3>
+
+    </div>
+</div>
+        <div class="workBx">
+    <div class="imgBx">
+        <img  src="{% static 'images/img1.jpg'%}">
+    </div>
+    <div class="textBx">
+        <h3>Algorito</h3>
+    </div>
+</div>
+        <div class="workBx">
+    <div class="imgBx">
+        <img  src="{% static 'images/img1.jpg'%}">
+    </div>
+    <div class="textBx">
+        <h3>Algorito</h3>
+
+    </div>
+</div>
+        <div class="workBx">
+    <div class="imgBx">
+        <img  src="{% static 'images/img1.jpg'%}">
+    </div>
+    <div class="textBx">
+        <h3>Algorito</h3>
+
+    </div>
+</div>
+        <div class="workBx">
+    <div class="imgBx">
+        <img src="img1.jpg">
+    </div>
+    <div class="textBx">
+        <h3>Algorito</h3>
+
+    </div>
+</div>
+        <div class="workBx">
+    <div class="imgBx">
+        <img src="img1.jpg">
+    </div>
+    <div class="textBx">
+        <h3>Algorito</h3>
+
+    </div>
+</div>
+
+    </div>
+
+</section>
+<section class="contact" id="contact">
+
+ <div class="title white">
+        <h2>Contact</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+    </div>
+    <div class="contactForm">
+        <div class="row">
+            <div class="col50">
+                <input type="text" name="" placeholder="First Name">
+            </div>
+             <div class="col50">
+                <input type="text" name="" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="row">
+             <div class="col50">
+                <input type="text" name="" placeholder="Email">
+            </div>
+             <div class="col50">
+                <input type="text" name="" placeholder="Mobile Number">
+            </div>
+        </div>
+
+                <div class="row">
+            <div class="col100">
+                <textarea placeholder="Message">
+
+                </textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col100">
+                <input type="submit" value="send">
+            </div>
+        </div>
+
+        </div>
+
+</section>
+<div class="copyright">
+    <p>
+        Copyright 2021 online Tutorials. All Right Reserved.
+    </p>
+</div>
+
+<div class="sidebar">
+
+<ul class="menu">
+    <li><a href="#home" onclick="toggleMenu();">Home</a></li>
+    <li><a href="#about" onclick="toggleMenu();">About</a></li>
+    <li><a href="#services" onclick="toggleMenu();">Services</a></li>
+    <li><a href="#work" onclick="toggleMenu();">Work</a></li>
+    <li><a  href="{% url 'cv_page' %}" onclick="toggleMenu();">CV</a></li>
+    <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+</ul>
+
+</div>
+<script>
+    function toggleMenu(){
+    const menuToggle = document.querySelector('.toggle');
+    const sidebar = document.querySelector('.sidebar');
+    menuToggle.classList.toggle('active');
+    sidebar.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
