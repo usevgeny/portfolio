@@ -62,12 +62,12 @@
     <div class="content">
         <div class="textBx1">
             <p>
-                    gligligli
+
             {{ aboutme.0.description }}
             </p>
         </div>
         <div class="imgBx">
-            <img  src="{{ aboutme.0.my_photo.url }}">>
+            <img  src="{{ aboutme.0.my_photo.url }}">
 
         </div>
 
@@ -137,28 +137,52 @@
         </p>
     </div>
     <div class="contactForm">
+        <form action="{% url 'index' %}" method="post">
+                                        {% csrf_token %}
         <div class="row">
             <div class="col50">
+                {{ email_form.first_name }}
+                {{ email_form.first_name.errors }}
+                {% comment %}
                 <input type="text" name="" placeholder="First Name">
+                {% endcomment %}
             </div>
              <div class="col50">
+                 {{ email_form.last_name }}
+                 {{ email_form.last_name.errors }}
+                 {% comment %}
                 <input type="text" name="" placeholder="Last Name">
+                 {% endcomment %}
             </div>
         </div>
         <div class="row">
              <div class="col50">
+                  {{ email_form.mail }}
+                 {{ email_form.mail.errors }}
+
+                 {% comment %}
                 <input type="text" name="" placeholder="Email">
+                 {% endcomment %}
             </div>
              <div class="col50">
+                  {{ email_form.mobile_number }}
+                 {{ email_form.mobile_number.errors }}
+                 {% comment %}
                 <input type="text" name="" placeholder="Mobile Number">
+                 {% endcomment %}
             </div>
         </div>
 
                 <div class="row">
             <div class="col100">
+                {{ email_form.message_text }}
+                 {{ email_form.message_text.errors }}
+
+                {% comment %}
                 <textarea placeholder="Message">
 
                 </textarea>
+                {% endcomment %}
             </div>
         </div>
         <div class="row">
