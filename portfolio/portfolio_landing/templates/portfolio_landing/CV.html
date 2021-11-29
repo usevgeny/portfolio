@@ -20,10 +20,15 @@
     <div class="left_Side">
         <div class="profileText">
             <div class="imgBx">
-                 <img src="{% static 'images/cv.JPG'%}">
+
+                {% if selected_cv.0.my_cv_photo %}
+                <img src="{{ selected_cv.0.my_cv_photo.url }}">
+                {% else %}
+                <img src="{% static 'images/cv.JPG'%}">
+                {% endif %}
 
             </div>
-            <h2>Evgeny USACHEV<br><span>Web Developer</span></h2>
+            <h2>{{ selected_cv.0.mycvname }}<br><span>{{ selected_cv.0.myprofile }}</span></h2>
 
         </div>
         <div class="contactInfo">
@@ -31,83 +36,63 @@
             <ul>
                 <li>
                     <span class="icon"><i class="fa fa-envelope"></i></span>
-                    <span class="text">evgeny.rfi@gmail.com</span>
+                    <a href="mailto: {{ selected_cv.0.cvmail }}"><span class="text">{{ selected_cv.0.cvmail }}</span></a>
                 </li>
 
                 <li>
                     <span class="icon"><i class="fa fa-globe"></i></span>
-                    <span class="text">https://evgeny.usachev.fr</span>
+                    <a href="{{ selected_cv.0.cvwebsite }}"><span class="text">{{ selected_cv.0.cvwebsite }}</span></a>
                 </li>
 
                 <li>
                     <span class="icon"><i class="fa fa-address-card"></i></span>
-                    <a href="https://www.linkedin.com/in/evgeny-usachev-ba071a196"><span class="text">www.linkedin.com</span></a>
+                    <a href="{{ selected_cv.0.cvlinkedin }}"><span class="text">www.linkedin.com</span></a>
                 </li>
 
 
 
                 <li>
                     <span class="icon"><i class="fa-regular fa-map"></i></span>
-                    <span class="text">Nice, France</span>
-                </li>
-
-            </ul>
-        </div>
-
-        <div class="contactInfo education">
-            <h3 class="title">Education</h3>
-            <ul>
-                <li>
-                    <h5>2004-2007</h5>
-                    <h4>Master Degree in ...</h4>
-                    <h4>Univerity</h4>
-                </li>
-                <li>
-                    <h5>2004-2007</h5>
-                    <h4>Master Degree in ...</h4>
-                    <h4>Univerity</h4>
-                </li>
-
-                <li>
-                    <h5>2004-2007</h5>
-                    <h4>Master Degree in ...</h4>
-                    <h4>Univerity</h4>
+                    <span class="text">{{ selected_cv.0.cvlocation }}</span>
                 </li>
 
             </ul>
         </div>
 
         <div class="contactInfo language">
+            {% if language_set %}
             <h3 class="title">Languages</h3>
-            <ul>
+            <ul>{% for item in language_set %}
                 <li>
-                    <span class="text">French</span>
+                    <span class="text">{{ item.lang }}</span>
                     <div class="percent">
-                         <div style="width: 95%;"></div>
+                         <div style="width: {{ item.lang_percent }}%;"></div>
                      </div>
                 </li>
-                <li>
-                    <span class="text">English</span>
-                    <div class="percent">
-                         <div style="width: 90%;"></div>
-                     </div>
-                </li>
-                <li>
-                    <span class="text">Italian</span>
-
-                    <div class="percent">
-                         <div style="width: 85%;"></div>
-
-                     </div>
-                </li>
-                <li>
-                    <span class="text">Russian</span>
-                    <div class="percent">
-                         <div style="width: 100%;"></div>
-                     </div>
-                </li>
+                {% endfor %}
             </ul>
+             {% endif %}
         </div>
+
+
+        <div class="contactInfo education">
+            {% if education_set %}
+            <h3 class="title">Education</h3>
+            <ul>
+                {% for item in education_set %}
+                <li>
+                    <h5>{{ item.years }}</h5>
+                    <h4>{{ item.degree }}</h4>
+                    <h4>{{ item.description }}</h4>
+                    <h4>{{ item.establishment }}</h4>
+                </li>
+                {% endfor %}
+
+            </ul>
+            {% endif %}
+        </div>
+
+
 
     </div>
     <div class="right_Side">
@@ -115,117 +100,59 @@
         <div class="about">
             <h2 class="title2">Profile</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus pharetra dapibus. Sed egestas eget purus quis tristique. Aenean aliquet nisl nec facilisis tincidunt. Mauris mattis massa convallis semper rutrum. Proin efficitur porta massa, id ultricies ex varius a.
+                {{ selected_cv.0.description }}
             </p>
         </div>
         <div class="about">
+            {% if experience_set %}
             <h2 class="title2">Experience</h2>
+            {% for item in experience_set %}
             <div class="box">
                 <div class="year_company">
-                    <h5>2012-2020</h5>
-                    <h5>Company Name</h5>
+                    <h5>{{ item.years }}</h5>
+                    <h5>{{ item.company }}</h5>
                 </div>
                 <div class="text">
                     <h4>
-                        Senior Ux Designer
+                        {{ item.position }}
                     </h4>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus pharetra dapibus. Sed egestas eget purus quis tristique. Aenean aliquet nisl nec facilisis tincidunt. Mauris mattis massa convallis semper rutrum. Proin efficitur porta massa, id ultricies ex varius a.
+                       {{ item.description }}
 
                     </p>
                 </div>
-
-
             </div>
-
-            <div class="box">
-                <div class="year_company">
-                    <h5>2012-2020</h5>
-                    <h5>Company Name</h5>
-                </div>
-                <div class="text">
-                    <h4>
-                        Senior Ux Designer
-                    </h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus pharetra dapibus. Sed egestas eget purus quis tristique. Aenean aliquet nisl nec facilisis tincidunt. Mauris mattis massa convallis semper rutrum. Proin efficitur porta massa, id ultricies ex varius a.
-
-                    </p>
-                </div>
-
-
-            </div>
-
-            <div class="box">
-                <div class="year_company">
-                    <h5>2012-2020</h5>
-                    <h5>Company Name</h5>
-                </div>
-                <div class="text">
-                    <h4>
-                        Senior Ux Designer
-                    </h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus pharetra dapibus. Sed egestas eget purus quis tristique. Aenean aliquet nisl nec facilisis tincidunt. Mauris mattis massa convallis semper rutrum. Proin efficitur porta massa, id ultricies ex varius a.
-
-                    </p>
-                </div>
-
-
-            </div>
+                {% endfor %}
+                {% endif %}
         </div>
+
+
+
         <div class="about skills">
+            {% if skill_set %}
             <h2 class="title2">Professional Skills</h2>
+            {% for item in skill_set %}
             <div class="box">
-                <h4>Django</h4>
+                <h4>{{ item.skill }}</h4>
                 <div class="percent">
-                    <div style="width:90%"></div>
-                </div>
-                <h4>Html</h4>
-                <div class="percent">
-                    <div style="width:95%"></div>
-
-                </div>
-                <h4>Css</h4>
-                <div class="percent">
-                <div style="width:75%"></div>
-                </div>
-                <h4>Java script</h4>
-                <div class="percent">
-                <div style="width:55%"></div>
-                </div>
-                <h4>Python</h4>
-                <div class="percent">
-                    <div style="width:85%"></div>
-                </div>
-                <h4>Bash</h4>
-                <div class="percent">
-                    <div style="width:95%"></div>
-                </div>
-
-                <h4>Linux</h4>
-                <div class="percent">
-                    <div style="width:75%"></div>
-                </div>
-                <h4>Git</h4>
-                <div class="percent">
-                    <div style="width:85%"></div>
-                </div>
-               <h4>Docker</h4>
-                <div class="percent">
-                    <div style="width:85%"></div>
+                    <div style="width:{{ item.skill_percent }}%"></div>
                 </div>
             </div>
+            {% endfor %}
+            {% endif %}
+
         </div>
 
         <div class="about interest">
+            {% if interest_set %}
              <h2 class="title2">Interest</h2>
             <ul>
-                <li><i class="fa fa-running"></i> Sports</li>
-                <li><i class="fa fa-microchip"></i> DIY</li>
-                <li><i class="fa fa-terminal"></i> Programming</li>
-                <li><i class="fa fa-camera"></i> Photography</li>
+                {% for item in interest_set %}
+                <li><i class="fa {{ item.icon }}"></i> {{ item.interest }}</li>
+                {% endfor %}
+
             </ul>
+            {% endif %}
 
         </div>
 

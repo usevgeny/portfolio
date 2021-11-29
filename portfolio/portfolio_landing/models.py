@@ -24,7 +24,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Service(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
-    ordering = models.IntegerField(default=1, verbose_name='ordering', validators=[MinValueValidator(1),
+    ordering_rate = models.IntegerField(default=1, verbose_name='ordering', validators=[MinValueValidator(1),
                                                                                            MaxValueValidator(100)])
     description = models.TextField(blank=True)
     meta_desc = models.CharField(max_length=160, blank=True)
@@ -44,7 +44,7 @@ class Service(models.Model):
 class Work(models.Model):
     work_title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
-    ordering = models.IntegerField(default=1, verbose_name='ordering', validators=[MinValueValidator(1),
+    ordering_rate = models.IntegerField(default=1, verbose_name='ordering', validators=[MinValueValidator(1),
                                                                                    MaxValueValidator(100)])
 
     work_description = models.TextField(blank=True)
@@ -81,6 +81,29 @@ class AboutMe(models.Model):
 
     def get_absolute_url(self):
         return reverse('aboutme',kwargs={"slug":self.slug})
+
+class Cvdata(models.Model):
+    mycvname = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
+    cvmail = models.CharField(max_length=100)
+    cvlocation = models.CharField(max_length=100)
+    cvlinkedin = models.CharField(max_length=100)
+    cvwebsite = models.CharField(max_length=300)
+    myprofile = models.TextField(blank=True)
+    description = models.TextField(blank=True)
+    meta_desc = models.CharField(max_length=160, blank=True)
+    meta_keys = models.CharField(max_length=300, blank=True)
+    my_cv_photo = models.ImageField(upload_to=f'photos/{mycvname}', verbose_name='Img', blank=True)
+
+    def __str__(self):
+        return self.mycvname
+
+    class Meta:
+        ordering = ['-mycvname']
+
+    def get_absolute_url(self):
+        return reverse('cvdata',kwargs={"slug":self.slug})
+
 
 class Intro(models.Model):
     intro_name = models.CharField(max_length=100)
@@ -136,6 +159,8 @@ class Experience(models.Model):
     years = models.CharField(max_length=100)
     company = models.CharField(max_length=200)
     description = models.TextField(blank=False)
+    position = models.CharField(max_length=200)
+
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
     meta_desc = models.CharField(max_length=160, blank=True)
     meta_keys = models.CharField(max_length=300, blank=True)
@@ -150,6 +175,29 @@ class Experience(models.Model):
 
     def get_absolute_url(self):
         return reverse('experience',kwargs={"slug":self.slug})
+
+
+class Education(models.Model):
+    years = models.CharField(max_length=100, blank=False)
+    degree = models.CharField(max_length=200, blank=False)
+    establishment = models.CharField(max_length=200, blank=False)
+    description = models.TextField(blank=True)
+    slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
+    meta_desc = models.CharField(max_length=160, blank=True)
+    meta_keys = models.CharField(max_length=300, blank=True)
+    is_published = models.BooleanField(default=True, verbose_name='Published')
+
+
+    def __str__(self):
+        return self.years
+
+    class Meta:
+        ordering = ['-years']
+
+    def get_absolute_url(self):
+        return reverse('education',kwargs={"slug":self.slug})
+
+
 
 class Interests(models.Model):
     interest = models.CharField(max_length=100)

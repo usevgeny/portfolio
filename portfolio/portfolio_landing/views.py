@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Service,Work,AboutMe,Intro,Language,Skill,Experience,Interests,PrivateSettings
+from .models import Service, Work, AboutMe, Intro, Language, Skill, Experience, Interests, PrivateSettings, Cvdata, \
+    Education
 from django.http import HttpResponse
 from .forms import EmailForm, SendChatForm
 from django.core.mail import send_mail, EmailMessage
@@ -7,6 +8,7 @@ import asyncio
 from datetime import datetime
 from .bot_portfolio import send
 from ip2geotools.databases.noncommercial import DbIpCity
+from decouple import config
 #def index(request):
 #    return HttpResponse('HelloWorld')
 
@@ -99,8 +101,8 @@ def index(request):
     try:
         intro=Intro.objects.all()
         aboutme=AboutMe.objects.all()
-        services=Service.objects.all().filter(is_published=True).order_by('ordering')
-        works=Work.objects.all().filter(is_published=True).order_by('ordering')
+        services=Service.objects.all().filter(is_published=True).order_by('ordering_rate')
+        works=Work.objects.all().filter(is_published=True).order_by('ordering_rate')
 
     except Exception as e:
         intro=[Intro(intro_name="empty"),]
@@ -111,7 +113,7 @@ def index(request):
 
     if request.method == 'POST':
         req_index_post = dict(request.POST.items())
-        print(req_index_post)
+
         if 'send_mail' in req_index_post:
             email_form = EmailForm(request.POST)
 
@@ -124,8 +126,8 @@ def index(request):
                 mail = send_mail(
                     subject=f'PORTFOLIO CONTACT FORM:{first_name} {last_name}:{contact_mail},{mobile_number}.',
                     message=f"Message {contact_message}",
-                    from_email='inventoryappli@gmail.com',
-                    recipient_list=['evgeny.rfi@gmail.com','support@algorito.fr' ], fail_silently=True, )
+                    from_email=config('EMAIL_HOST_USER'),
+                    recipient_list=[config('RECIPIENT'), ], fail_silently=True, )
 
                 ####EMAIL####
 
@@ -196,4 +198,43 @@ def index(request):
 
 def cv_page(request):
 
-    return render(request, 'portfolio_landing/CV.html', context={})
+    try:
+        selected_cv = Cvdata.objects.all()
+    except Exception as e:
+        selected_cv = [
+            Cvdata(mycvname='empty', slug='empty', cvmail='empty', cvlocation='empty', cvlinkedin='#', cvwebsite='#',
+                   myprofile='empty', description='empty', )]
+        print(e)
+    try:
+        language_set = Language.objects.all().order_by('-lang_percent')
+    except Exception as e:
+        language_set = []
+
+    try:
+        skill_set = Skill.objects.all().order_by('-skill_percent')
+    except Exception as e:
+        skill_set = []
+    try:
+        experience_set = Experience.objects.all().filter(is_published=True).order_by('-years')
+    except Exception as e:
+        experience_set = []
+    try:
+        interest_set = Interests.objects.all()
+    except Exception as e:
+        interest_set = []
+    try:
+        education_set = Education.objects.all().filter(is_published=True).order_by('-years')
+    except Exception as e:
+        education_set = []
+
+
+    context={
+        'selected_cv':selected_cv,
+        'language_set':language_set,
+        'skill_set':skill_set,
+        'experience_set':experience_set,
+        'interest_set':interest_set,
+        'education_set':education_set,
+            }
+
+    return render(request, 'portfolio_landing/CV.html', context=context)

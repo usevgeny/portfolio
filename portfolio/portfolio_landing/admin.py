@@ -4,7 +4,7 @@ from django import forms
 # Register your models here.
 from django.utils.safestring import mark_safe
 
-from .models import Service,Work,AboutMe,Intro,Language,Skill,Experience,Interests,PrivateSettings
+from .models import Service,Work,AboutMe,Intro,Language,Skill,Experience,Interests,Cvdata,PrivateSettings,Education
 
 class AboutMeAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('myname',)
@@ -56,7 +56,6 @@ class ServiceAdmin(admin.ModelAdmin):
 
     get_photo.short_description = 'img'
 
-
 class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('work_title',)
                            }
@@ -93,14 +92,39 @@ class SkillAdmin(admin.ModelAdmin):
 class InterestsAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('interest',)
                            }
-    list_display = ('id','interest' ,'slug','icon',)
+    list_display = ('id','interest' ,'slug','icon')
     list_display_links = ('id', 'interest')
     search_fields = ('interest',)
     fields = ('interest' ,'slug','icon',)
 
 
 class ExperienceAdmin(admin.ModelAdmin):
-    fields = ('years','company','description','slug','meta_desc','meta_keys','is_published',)
+    fields = ('years','company','position','description','slug','meta_desc','meta_keys','is_published',)
+
+
+class EducationAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('years',)
+                           }
+    fields = ('years','degree','establishment','description','slug','meta_desc','meta_keys','is_published',)
+
+class CvdataAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug':('mycvname',)
+                           }
+    list_display = ('mycvname','slug','cvmail','cvlocation','cvlinkedin','cvwebsite','myprofile','description','meta_desc','meta_keys','my_cv_photo',)
+    list_display_links = ('mycvname',)
+    search_fields = ('mycvname',)
+    readonly_fields = ('get_photo',)
+    fields = ('mycvname','slug','cvmail','cvlocation','cvlinkedin','cvwebsite','myprofile','description','meta_desc','meta_keys','my_cv_photo',)
+
+    def get_photo(self, obj):
+        if obj.my_cv_photo:
+            return mark_safe(f'<img src="{obj.my_cv_photo.url}" width="50">')
+        return '-'
+
+    get_photo.short_description = 'photo'
+
+
+
 
 class PrivateSettingsAdmin(admin.ModelAdmin):
     fields = ('title','destination_chat','bot_id', 'sms_logging')
@@ -116,4 +140,6 @@ admin.site.register(Language,LanguageAdmin)
 admin.site.register(Skill,SkillAdmin)
 admin.site.register(Experience,ExperienceAdmin)
 admin.site.register(Interests,InterestsAdmin)
+admin.site.register(Education,EducationAdmin)
+admin.site.register(Cvdata,CvdataAdmin)
 admin.site.register(PrivateSettings,PrivateSettingsAdmin)
