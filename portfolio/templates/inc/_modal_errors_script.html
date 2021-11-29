@@ -1,0 +1,23 @@
+
+<script>
+
+const modal_error=document.querySelector('.modal_error')
+const overlay_error=document.getElementById('overlay_error')
+
+var url = "{% url 'index' %}"
+
+function closeModalError(modal_error){
+
+document.location.href = url
+
+        }
+
+
+overlay_error.addEventListener('click', () => {
+
+document.location.href = url
+
+})
+
+
+</script>

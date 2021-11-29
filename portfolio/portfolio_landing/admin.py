@@ -103,7 +103,7 @@ class ExperienceAdmin(admin.ModelAdmin):
     fields = ('years','company','description','slug','meta_desc','meta_keys','is_published',)
 
 class PrivateSettingsAdmin(admin.ModelAdmin):
-    fields = ('id','title','destination_chat','bot_id')
+    fields = ('title','destination_chat','bot_id', 'sms_logging')
 
 
 

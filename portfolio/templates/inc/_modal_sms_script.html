@@ -1,0 +1,37 @@
+
+<script>
+
+const modal_sms=document.querySelector('.modal_sms')
+const overlay=document.getElementById('overlay')
+
+function openModal(){
+
+modal_sms.classList.add('active')
+overlay.classList.add('active')
+}
+
+function closeModal(modal_sms){
+
+
+
+        if (modal_sms == null ) return
+        modal_sms.classList.remove('active')
+        overlay.classList.remove('active')
+
+
+        }
+
+
+overlay.addEventListener('click', () => {
+const modal_sms_active = document.querySelectorAll('.modal_sms.active')
+
+modal_sms_active.forEach(modal_dist_create => {
+modal_sms.classList.remove('active')
+overlay.classList.remove('active')
+
+})
+
+})
+
+
+</script>

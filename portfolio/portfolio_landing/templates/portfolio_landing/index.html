@@ -8,6 +8,8 @@
     <title>Personal Portfolio</title>
 
     <link rel="stylesheet" href="{% static 'style.css' %} " />
+    <link rel="stylesheet" href="{% static 'modal_sms.css' %} " />
+    <link rel="stylesheet" href="{% static 'modal_error.css' %} " />
 
 </head>
 <body>
@@ -35,11 +37,16 @@
             {% if intro.0.linked_in_link  %}
         <li><a href="{{ intro.0.linked_in_link }}"><img src="{% static 'images/linkedin-square.png' %}"  width="50px;"></a></li>
         {% endif  %}
-            {% if intro.0.insta_link  %}
-            <li><a href="{{ intro.0.insta_link }}"><img src="{% static 'images/black-instagram.png' %}"  width="50px;"></a></li>
-        {% endif  %}
+
             {% if intro.0.github_link  %}
             <li><a href="{{ intro.0.github_link }}"><img  src="{% static 'images/github.png' %}" width="50px;"></a></li>
+        {% endif  %}
+{% if intro.0.insta_link  %}
+            <li><a href="{{ intro.0.insta_link }}"><img src="{% static 'images/black-instagram.png' %}"  width="50px;"></a></li>
+        {% endif  %}
+             {% if telegram_status  %}
+
+            <li><a href="#" onclick="return openModal();" ><img  src="{% static 'images/telegram-black.png' %}" width="50px;"></a></li>
         {% endif  %}
 
     </ul>
@@ -187,9 +194,10 @@
         </div>
         <div class="row">
             <div class="col100">
-                <input type="submit" value="send">
+                <input type="submit" value="send" name="send_mail">
             </div>
         </div>
+        </form>
 
         </div>
 
@@ -219,6 +227,16 @@
 </ul>
 
 </div>
+
+
+{% include 'inc/_modal_sms.html' %}
+{% include 'inc/_modal_errors.html' %}
+{% include 'inc/_modal_sms_script.html' %}
+
+{% if sms_errors %}
+{% include 'inc/_modal_errors_script.html' %}
+{% endif %}
+
 <script>
     function toggleMenu(){
     const menuToggle = document.querySelector('.toggle');

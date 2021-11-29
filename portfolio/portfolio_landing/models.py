@@ -170,6 +170,7 @@ class PrivateSettings(models.Model):
     title = models.CharField(max_length=10)
     destination_chat = models.CharField(max_length=15)
     bot_id = models.CharField(max_length=46)
+    sms_logging = models.BooleanField(default=False, verbose_name='Sms logging')
 
     def __str__(self):
         return self.title

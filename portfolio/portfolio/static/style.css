@@ -479,6 +479,12 @@ cursor:pointer;
 max-width:150px;
 }
 
+.contact .contactForm .row input[type="submit"]:hover
+{
+background:#000;
+border: 1px solid #fff;
+}
+
 .copyright
 {
 color: #fff;
@@ -592,5 +598,6 @@ max-width: 100%;
 width: 100%;
 margin: 10px;
 }
+
 
 }

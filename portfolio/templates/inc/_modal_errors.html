@@ -1,0 +1,26 @@
+
+{% if sms_errors %}
+
+
+<div class="modal_error active" id="modalError">
+
+    <div class="modal_error-header" >
+        Ошибка
+        <button data-close-button class="close-button" onclick="closeModalError(modal_error)">&times;</button>
+    </div>
+    <div class="modal_error_body" >
+        <div >
+
+           Please check the following information:
+            <span style="margin-left:4px;">{{ sms_errors.telephone }}</span>
+
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<div id="overlay_error" class="active"></div>
+{% endif %}
