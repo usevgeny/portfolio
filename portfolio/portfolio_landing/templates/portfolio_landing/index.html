@@ -15,7 +15,7 @@
 
 <section class="banner" id="home">
     <div class="imgSidebar">
-        <img src="{% static 'images/bg.jpg'%}">
+        <img src="{{ intro.0.my_photo.url }}">
     </div>
     <div class="contentBx">
         <div>
@@ -23,19 +23,24 @@
             </div>
         <div>
             <h4><span>Hello</span> I'm </h4>
-            <h2>Evgeny USACHEV</h2>
-            <h4> I'm a Back End Developer.</h4>
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus pharetra dapibus. Sed egestas eget purus quis tristique. Aenean aliquet nisl nec facilisis tincidunt. Mauris mattis massa convallis semper rutrum. Proin efficitur porta massa, id ultricies ex varius a.
+            <h2>{{ intro.0.intro_name }}</h2>
+            <h4>{{ intro.0.intro }}</h4>
+            <p> {{ intro.0.presentation }}</p>
                 <br><br>
             <a href="#about" class="btn">About Me</a>
 
         </div>
 
         <ul class="sci">
-        <li><a href="https://www.linkedin.com/in/evgeny-usachev-ba071a196"><img src="{% static 'images/linkedin-square.png' %}"  width="50px;"></a></li>
-        <li><a href="https://instagram.com/usevgeny/"><img src="{% static 'images/black-instagram.png' %}"  width="50px;"></a></li>
-        <li><a href="https://github.com/usevgeny"><img  src="{% static 'images/github.png' %}" width="50px;"></a></li>
-
+            {% if intro.0.linked_in_link  %}
+        <li><a href="{{ intro.0.linked_in_link }}"><img src="{% static 'images/linkedin-square.png' %}"  width="50px;"></a></li>
+        {% endif  %}
+            {% if intro.0.insta_link  %}
+            <li><a href="{{ intro.0.insta_link }}"><img src="{% static 'images/black-instagram.png' %}"  width="50px;"></a></li>
+        {% endif  %}
+            {% if intro.0.github_link  %}
+            <li><a href="{{ intro.0.github_link }}"><img  src="{% static 'images/github.png' %}" width="50px;"></a></li>
+        {% endif  %}
 
     </ul>
 
@@ -45,29 +50,31 @@
 
 
 </section>
+{% if aboutme %}
 <section class="about" id="about">
 
     <div class="title white">
         <h2>About</h2>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+            {{ aboutme.0.aboutmetitle }}
         </p>
     </div>
     <div class="content">
         <div class="textBx1">
             <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus pharetra dapibus. Sed egestas eget purus quis tristique. Aenean aliquet nisl nec facilisis tincidunt. Mauris mattis massa convallis semper rutrum. Proin efficitur porta massa, id ultricies ex varius a.
-                <br><br>Phasellus tristique, orci aliquet ornare sollicitudin, nibh lacus tincidunt nisi, eu hendrerit justo magna non tortor. Curabitur nec malesuada massa, et porttitor metus. In et ultricies orci. Integer lobortis tristique dictum.
+                    gligligli
+            {{ aboutme.0.description }}
             </p>
         </div>
         <div class="imgBx">
-            <img  src="{% static 'images/bg1.jpg'%}">
+            <img  src="{{ aboutme.0.my_photo.url }}">>
 
         </div>
 
     </div>
 </section>
+{% endif %}
+{% if services %}
 <section class="services" id="services">
 
     <div class="title">
@@ -78,72 +85,22 @@
         </p>
     </div>
     <div class="content">
+        {% for service in services %}
         <div class="servicesBx">
-            <img  src="{% static 'images/icon1.png'%}" >
-            <h2>Web Design</h2>
+            <img src="{{ service.photo.url }}">
+            <h2>{{ service.title }}</h2>
                    <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+            {{ service.description }}
         </p>
         </div>
+        {% endfor %}
 
-    <div class="servicesBx">
-            <img  src="{% static 'images/icon2.png'%}">
-            <h2>Video Editing</h2>
-                   <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
-        </p>
-        </div>
-
-    <div class="servicesBx">
-            <img src="{% static 'images/icon3.png'%}">
-            <h2>Content Writing</h2>
-                   <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
-        </p>
-        </div>
-
-
-        <div class="servicesBx">
-            <img  src="{% static 'images/github.png'%}" >
-            <h2>Photography</h2>
-                   <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
-        </p>
-        </div>
-
-        <div class="servicesBx">
-            <img  src="{% static 'images/icon4.png'%}">
-            <h2>Photography</h2>
-                   <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
-        </p>
-        </div>
-        <div class="servicesBx">
-            <img  src="{% static 'images/icon4.png'%}">
-            <h2>Photography</h2>
-                   <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
-        </p>
-        </div>
-        <div class="servicesBx">
-            <img src="{% static 'images/icon4.png'%}">
-            <h2>Photography</h2>
-                   <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
-        </p>
-        </div>
-
-            <div class="servicesBx">
-            <img src="{% static 'images/icon4.png'%}">
-            <h2>Web App development</h2>
-                   <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
-        </p>
-        </div>
     </div>
 
 
 </section>
+{% endif %}
+{% if works %}
 <section class="work" id="work">
  <div class="title">
         <h2>Recent works</h2>
@@ -152,64 +109,25 @@
         </p>
     </div>
     <div class="content">
-
+{% for work in works %}
 <div class="workBx">
     <div class="imgBx">
-        <img src="{% static 'images/img1.jpg'%}">
+        {% if work.work_photo %}
+        <img src="{{ work.work_photo.url }}">
+        {% else %}
+        <img  src="{% static 'images/code.png' %}" width="50px;">
+        {% endif %}
     </div>
     <div class="textBx">
-        <h3>Algorito</h3>
-
+        <h3>{{ work.work_title }}</h3>
     </div>
 </div>
-        <div class="workBx">
-    <div class="imgBx">
-        <img  src="{% static 'images/img1.jpg'%}">
-    </div>
-    <div class="textBx">
-        <h3>Algorito</h3>
-    </div>
-</div>
-        <div class="workBx">
-    <div class="imgBx">
-        <img  src="{% static 'images/img1.jpg'%}">
-    </div>
-    <div class="textBx">
-        <h3>Algorito</h3>
-
-    </div>
-</div>
-        <div class="workBx">
-    <div class="imgBx">
-        <img  src="{% static 'images/img1.jpg'%}">
-    </div>
-    <div class="textBx">
-        <h3>Algorito</h3>
-
-    </div>
-</div>
-        <div class="workBx">
-    <div class="imgBx">
-        <img src="img1.jpg">
-    </div>
-    <div class="textBx">
-        <h3>Algorito</h3>
-
-    </div>
-</div>
-        <div class="workBx">
-    <div class="imgBx">
-        <img src="img1.jpg">
-    </div>
-    <div class="textBx">
-        <h3>Algorito</h3>
-
-    </div>
-</div>
+{% endfor %}
 
     </div>
 
 </section>
+{% endif %}
 <section class="contact" id="contact">
 
  <div class="title white">
@@ -262,10 +180,17 @@
 
 <ul class="menu">
     <li><a href="#home" onclick="toggleMenu();">Home</a></li>
+    {% if intro %}
     <li><a href="#about" onclick="toggleMenu();">About</a></li>
+    {% endif %}
+    {% if services %}
     <li><a href="#services" onclick="toggleMenu();">Services</a></li>
+    {% endif %}
+    {% if works %}
     <li><a href="#work" onclick="toggleMenu();">Work</a></li>
+    {% endif %}
     <li><a  href="{% url 'cv_page' %}" onclick="toggleMenu();">CV</a></li>
+
     <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
 </ul>
 
