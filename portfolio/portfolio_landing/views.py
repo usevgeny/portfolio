@@ -229,6 +229,10 @@ def index(request, template_to_be_rendered='portfolio_landing/ENG/index.html'):
 def index_fr(request):
     return index(request, template_to_be_rendered='portfolio_landing/FR/index.html')
 
+def index_rus(request):
+    return index(request, template_to_be_rendered='portfolio_landing/RUS/index.html')
+
+
 
 def cv_page(request, template_to_be_rendered='portfolio_landing/ENG/CV.html'):
     try:
@@ -286,3 +290,6 @@ def cv_page(request, template_to_be_rendered='portfolio_landing/ENG/CV.html'):
 
 def cv_page_fr(request):
     return cv_page(request,template_to_be_rendered='portfolio_landing/FR/CV.html')
+
+def cv_page_rus(request):
+    return cv_page(request,template_to_be_rendered='portfolio_landing/RUS/CV.html')

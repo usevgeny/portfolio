@@ -1,3 +1,4 @@
+
 {% extends 'index.html' %}
 {% block logo %}
 My_portfolio
@@ -38,6 +39,11 @@ Contact
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
 {% endblock %}
 
+{% block form %}
+<form action="{% url 'index' %}" method="post">
+{% endblock %}
+
+
 {% block sendbtn %}send{% endblock%}
 
 {% block sidebarmenu %}
@@ -55,5 +61,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
     <li><a  href="{% url 'cv_page' %}" onclick="toggleMenu();">CV</a></li>
 
     <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+    <li>
+        <div class="dropdown_on_click">
+  <a class="nav-link dropbtn"  onclick="dopdownOnClick(this.id)" id="ordersdrop_btn">Language</a>
+  <div drop-contents-target class="dropdown_content_on_click" id="ordersdrop_content">
+    <a class="dropdown-item" href="{% url 'index_fr' %}">FR</a>
+    <a class="dropdown-item" href="{% url 'index_rus' %}">RUS</a>
+
+  </div>
+</div>
+
+    </li>
+
+
+
 </ul>
 {% endblock%}
+
+{% block modal %}
+{% include 'inc/_modal_sms.html' %}
+{% include 'inc/_modal_errors.html' %}
+
+{% endblock %}

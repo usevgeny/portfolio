@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="view-port" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %} " />
+
+</head>
+<body>
+<div class="toggle" onclick="toggleMenu()"></div>
+
+<section class="about" id="about">
+
+    <div class="title white">
+        <h2>Email</h2>
+        {% if email_status == 'success' %}
+        <p>
+            {% block success %}  {% endblock %}
+        </p>
+        {% else %}
+           <p>
+                {% block failmail %} {% endblock %}
+
+        </p>
+
+        {% endif %}
+        <br><br>
+        <img src="{% static 'images/email.png' %}" style="filter:invert(1);" width="100px;">
+    </div>
+    <div class="content">
+        <div class="textBx1">
+            <p>
+
+            </p>
+        </div>
+        <div class="imgBx">
+
+
+        </div>
+
+    </div>
+</section>
+
+
+<div class="sidebar">
+
+<ul class="menu">
+    <li><a href="{% url 'index' %}" onclick="toggleMenu();">{% block home %}{% endblock %}</a></li>
+
+</ul>
+
+</div>
+<script>
+    function toggleMenu(){
+    const menuToggle = document.querySelector('.toggle');
+    const sidebar = document.querySelector('.sidebar');
+    menuToggle.classList.toggle('active');
+    sidebar.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>

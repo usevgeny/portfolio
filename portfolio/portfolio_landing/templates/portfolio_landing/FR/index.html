@@ -38,6 +38,11 @@ Contact
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
 {% endblock %}
 
+{% block form %}
+<form action="{% url 'index_fr' %}" method="post">
+{% endblock %}
+
+
 {% block sendbtn %}Envoi{% endblock%}
 
 {% block sidebarmenu %}
@@ -55,6 +60,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
     <li><a  href="{% url 'cv_page_fr' %}" onclick="toggleMenu();">CV</a></li>
 
     <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+    <li>
+        <div class="dropdown_on_click">
+  <a class="nav-link dropbtn"  onclick="dopdownOnClick(this.id)" id="ordersdrop_btn">Langue</a>
+  <div drop-contents-target class="dropdown_content_on_click" id="ordersdrop_content">
+    <a class="dropdown-item" href="{% url 'index' %}">ENG</a>
+    <a class="dropdown-item" href="{% url 'index_rus' %}">RUS</a>
+
+  </div>
+</div>
+
+    </li>
 
 </ul>
 {% endblock%}
+
+{% block modal %}
+{% include 'inc/_modal_sms_fr.html' %}
+{% include 'inc/_modal_errors_fr.html' %}
+
+{% endblock %}

@@ -57,7 +57,7 @@ class Work(models.Model):
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
     ordering_rate = models.IntegerField(default=1, verbose_name='ordering', validators=[MinValueValidator(1),
                                                                                    MaxValueValidator(100)])
-
+    work_link = models.TextField(blank=True)
     work_description = models.TextField(blank=True)
     meta_desc = models.CharField(max_length=160, blank=True)
     meta_keys = models.CharField(max_length=300, blank=True)

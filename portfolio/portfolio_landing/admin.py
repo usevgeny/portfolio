@@ -44,11 +44,11 @@ class IntroAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('title',)
                            }
-    list_display = ('id','ordering','title','slug','description','meta_desc','meta_keys','photo','is_published','page_lang',)
+    list_display = ('id','ordering_rate','title','slug','description','meta_desc','meta_keys','photo','is_published','page_lang',)
     list_display_links = ('id', 'title','page_lang',)
     search_fields = ('page_lang','title',)
     readonly_fields = ('get_photo',)
-    fields = ('page_lang','ordering','title','slug','description','meta_desc','meta_keys','photo','is_published',)
+    fields = ('page_lang','ordering_rate','title','slug','description','meta_desc','meta_keys','photo','is_published',)
     save_as = True
     def get_photo(self, obj):
         if obj.photo:
@@ -60,12 +60,12 @@ class ServiceAdmin(admin.ModelAdmin):
 class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('work_title',)
                            }
-    list_display = ('id','ordering','work_title','slug','work_description','meta_desc','meta_keys','work_photo','is_published','page_lang',)
+    list_display = ('id','ordering_rate','work_title','work_link','slug','work_description','meta_desc','meta_keys','work_photo','is_published','page_lang',)
 
     list_display_links = ('id', 'work_title','page_lang',)
-    search_fields = ('page_lang','work_title','page_lang',)
+    search_fields = ('page_lang','work_title','page_lang','work_link',)
     readonly_fields = ('get_photo',)
-    fields = ('page_lang','ordering','work_title','slug','work_description','meta_desc','meta_keys','work_photo','is_published',)
+    fields = ('page_lang','ordering_rate','work_title','work_link','slug','work_description','meta_desc','meta_keys','work_photo','is_published',)
 
     save_as = True
 

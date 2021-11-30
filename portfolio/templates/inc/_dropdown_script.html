@@ -1,0 +1,31 @@
+<script>
+
+const dropDownContents = document.querySelectorAll('[drop-contents-target]')
+function dopdownOnClick(clicked) {
+var idContent = clicked.split('_')[0]+'_content'
+var dropdownContent = document.getElementById(idContent);
+
+
+dropDownContents.forEach(content => {
+
+if(content != dropdownContent){
+
+if (content.className.indexOf("showDropDown") != -1) {
+    content.className = content.className.replace(" showDropDown", "");
+  }
+
+
+}
+
+})
+
+
+if (dropdownContent.className.indexOf("showDropDown") == -1) {
+    dropdownContent.className += " showDropDown";
+  } else {
+    dropdownContent.className = dropdownContent.className.replace(" showDropDown", "");
+  }
+
+}
+
+</script>

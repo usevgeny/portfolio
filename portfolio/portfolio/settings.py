@@ -33,7 +33,7 @@ DEBUG = config('DEBUG', cast=bool, default=False)
 
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = True
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['localhost','127.0.0.1',]
 
 
 # Application definition
@@ -154,3 +154,8 @@ EMAIL_HOST_USER=config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD =config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=True)
 EMAIL_USE_SSL = config('EMAIL_USE_SSL', cast=bool, default=False)
+
+
+INTERNAL_IPS=[
+    '127.0.0.1',
+]
