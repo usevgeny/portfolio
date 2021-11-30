@@ -9,11 +9,11 @@ from .models import Service,Work,AboutMe,Intro,Language,Skill,Experience,Interes
 class AboutMeAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('myname',)
                            }
-    list_display = ('id','myname','slug','aboutmetitle','description','meta_desc','meta_keys','my_photo',)
-    list_display_links = ('id', 'myname')
-    search_fields = ('myname',)
-    readonly_fields = ('get_photo',)
-    fields = ('myname','slug','aboutmetitle','description','meta_desc','meta_keys','my_photo',)
+    list_display = ('id','myname','slug','aboutmetitle','description','meta_desc','meta_keys','my_photo','page_lang',)
+    list_display_links = ('id', 'myname','page_lang',)
+    search_fields = ('page_lang','myname',)
+    readonly_fields = ('page_lang','get_photo',)
+    fields = ('page_lang','myname','slug','aboutmetitle','description','meta_desc','meta_keys','my_photo',)
 
     def get_photo(self, obj):
         if obj.my_photo:
@@ -26,11 +26,11 @@ class AboutMeAdmin(admin.ModelAdmin):
 class IntroAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('intro_name',)
                            }
-    list_display = ('id','intro_name','slug','intro', 'presentation', 'my_photo', 'github_link','insta_link','linked_in_link','meta_desc','meta_keys',)
-    list_display_links = ('id', 'intro_name')
-    search_fields = ('intro_name',)
-    readonly_fields = ('get_photo',)
-    fields = ('intro_name','slug','intro', 'presentation', 'my_photo','github_link','insta_link','linked_in_link','meta_desc','meta_keys',)
+    list_display = ('id','intro_name','slug','intro', 'presentation', 'my_photo', 'github_link','insta_link','linked_in_link','meta_desc','meta_keys','page_lang',)
+    list_display_links = ('id', 'intro_name','page_lang',)
+    search_fields = ('page_lang','intro_name',)
+    readonly_fields = ('page_lang','get_photo',)
+    fields = ('page_lang','intro_name','slug','intro', 'presentation', 'my_photo','github_link','insta_link','linked_in_link','meta_desc','meta_keys',)
 
     def get_photo(self, obj):
         if obj.my_photo:
@@ -43,11 +43,11 @@ class IntroAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('title',)
                            }
-    list_display = ('id','ordering','title','slug','description','meta_desc','meta_keys','photo','is_published',)
-    list_display_links = ('id', 'title')
-    search_fields = ('title',)
-    readonly_fields = ('get_photo',)
-    fields = ('ordering','title','slug','description','meta_desc','meta_keys','photo','is_published',)
+    list_display = ('id','ordering','title','slug','description','meta_desc','meta_keys','photo','is_published','page_lang',)
+    list_display_links = ('id', 'title','page_lang',)
+    search_fields = ('page_lang','title',)
+    readonly_fields = ('page_lang','get_photo',)
+    fields = ('page_lang','ordering','title','slug','description','meta_desc','meta_keys','photo','is_published',)
 
     def get_photo(self, obj):
         if obj.photo:
@@ -59,12 +59,12 @@ class ServiceAdmin(admin.ModelAdmin):
 class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('work_title',)
                            }
-    list_display = ('id','ordering','work_title','slug','work_description','meta_desc','meta_keys','work_photo','is_published',)
+    list_display = ('id','ordering','work_title','slug','work_description','meta_desc','meta_keys','work_photo','is_published','page_lang',)
 
-    list_display_links = ('id', 'work_title')
-    search_fields = ('work_title',)
-    readonly_fields = ('get_photo',)
-    fields = ('ordering','work_title','slug','work_description','meta_desc','meta_keys','work_photo','is_published',)
+    list_display_links = ('id', 'work_title','page_lang',)
+    search_fields = ('page_lang','work_title','page_lang',)
+    readonly_fields = ('page_lang','get_photo',)
+    fields = ('page_lang','ordering','work_title','slug','work_description','meta_desc','meta_keys','work_photo','is_published',)
 
     def get_photo(self, obj):
         if obj.work_photo:
@@ -76,45 +76,45 @@ class WorkAdmin(admin.ModelAdmin):
 class LanguageAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('lang',)
                            }
-    list_display = ('id','lang' ,'slug','lang_percent',)
-    list_display_links = ('id', 'lang')
-    search_fields = ('lang',)
-    fields = ('lang' ,'slug','lang_percent',)
+    list_display = ('id','lang' ,'slug','lang_percent','page_lang',)
+    list_display_links = ('id', 'lang','page_lang',)
+    search_fields = ('page_lang','lang','page_lang',)
+    fields = ('page_lang','lang' ,'slug','lang_percent',)
 
 class SkillAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('skill',)
                            }
-    list_display = ('id','skill' ,'slug','skill_percent',)
-    list_display_links = ('id', 'skill')
-    search_fields = ('skill',)
-    fields = ('skill' ,'slug','skill_percent',)
+    list_display = ('id','skill' ,'slug','skill_percent','page_lang',)
+    list_display_links = ('id', 'skill','page_lang',)
+    search_fields = ('page_lang','skill',)
+    fields = ('page_lang','skill' ,'slug','skill_percent',)
 
 class InterestsAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('interest',)
                            }
-    list_display = ('id','interest' ,'slug','icon')
-    list_display_links = ('id', 'interest')
-    search_fields = ('interest',)
-    fields = ('interest' ,'slug','icon',)
+    list_display = ('id','interest' ,'slug','icon','page_lang',)
+    list_display_links = ('id', 'interest','page_lang',)
+    search_fields = ('page_lang','interest','page_lang',)
+    fields = ('page_lang','interest' ,'slug','icon',)
 
 
 class ExperienceAdmin(admin.ModelAdmin):
-    fields = ('years','company','position','description','slug','meta_desc','meta_keys','is_published',)
+    fields = ('page_lang','years','company','position','description','slug','meta_desc','meta_keys','is_published',)
 
 
 class EducationAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('years',)
                            }
-    fields = ('years','degree','establishment','description','slug','meta_desc','meta_keys','is_published',)
+    fields = ('page_lang','years','degree','establishment','description','slug','meta_desc','meta_keys','is_published',)
 
 class CvdataAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('mycvname',)
                            }
     list_display = ('mycvname','slug','cvmail','cvlocation','cvlinkedin','cvwebsite','myprofile','description','meta_desc','meta_keys','my_cv_photo',)
     list_display_links = ('mycvname',)
-    search_fields = ('mycvname',)
+    search_fields = ('page_lang','mycvname',)
     readonly_fields = ('get_photo',)
-    fields = ('mycvname','slug','cvmail','cvlocation','cvlinkedin','cvwebsite','myprofile','description','meta_desc','meta_keys','my_cv_photo',)
+    fields = ('page_lang','mycvname','slug','cvmail','cvlocation','cvlinkedin','cvwebsite','myprofile','description','meta_desc','meta_keys','my_cv_photo',)
 
     def get_photo(self, obj):
         if obj.my_cv_photo:

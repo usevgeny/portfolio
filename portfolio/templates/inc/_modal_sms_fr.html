@@ -1,0 +1,127 @@
+
+<div class="modal_sms" id="modal">
+
+    <div class="modal_sms-header title white" >
+        <p>Send me a telegram message</p>
+        <button data-close-button class="close-button" onclick="closeModal(modal)">&times;</button>
+    </div>
+    <div class="modal_sms_body" >
+        <div >
+
+            <section class="contact" id="telegram_contact">
+
+
+    <div class="contactForm">
+        <form action="{% url 'index' %}" method="post">
+                                        {% csrf_token %}
+             {{ smsform.non_field.errors }}
+        <div class="row">
+            <div class="col50">
+                {{ smsform.name }}
+                {{ smsform.name.errors }}
+
+            </div>
+             <div class="col50">
+                 {{ smsform.telephone }}
+                {{ smsform.telephone.errors }}
+
+            </div>
+        </div>
+
+
+                <div class="row">
+            <div class="col100">
+                {{ smsform.message }}
+                 {{ smsform.message.errors }}
+
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col100">
+                <input type="submit" value="send" name="send_telegram">
+            </div>
+        </div>
+        </form>
+
+        </div>
+
+</section>
+
+{% comment %}
+            <table style="width : 100%; " >
+                <tr>
+                    <td>
+                        Please leave your name telephone number and your message, I'll contact you shortly.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <form action="{% url 'index' %}" method="post">
+
+                            {% csrf_token %}
+                            {{ smsform.non_field.errors }}
+                            <table>
+                                <tr>
+                                    <td style=" text-align: left;">
+
+
+
+                                        <div class="mb-3">
+                                            <label for="{{ smsform.name.id_for_label }}">Ваше имя</label>
+
+                                            {{ smsform.name }}
+                                            <div class="invalid-feedback">
+                                                {{ smsform.name.errors }}
+                                            </div>
+                                        </div>
+                                    </td></tr>
+                                <tr><td>
+                                    <div class="mb-3">
+                                        <label for="{{ smsform.name.id_for_label }}">Ваш телефон</label>
+                                        {{ smsform.telephone }}
+                                        <div class="invalid-feedback">
+                                            {{ smsform.telephone.errors }}
+                                        </div>
+                                    </div>
+                                </td></tr>
+                                <tr><td>
+                                    <label for="{{ smsform.name.id_for_label }}">Сообщение</label>
+                                    <div class="mb-3">
+
+                                        {{ smsform.message }}
+                                        <div class="invalid-feedback">
+                                            {{ smsform.message.errors }}
+                                        </div>
+                                    </div>
+                                </td></tr>
+                                <tr><td>
+
+
+                                    <button type="submit" class="button_modal" name="send_telegram" >Отправить</button>
+
+                                </td>
+
+                                </tr>
+
+                            </table>
+
+                        </form>
+
+                    </td>
+                </tr>
+
+
+            </table>
+{% endcomment %}
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<div id="overlay" ></div>

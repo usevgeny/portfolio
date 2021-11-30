@@ -17,11 +17,20 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # Introduction (General description, photo)
 # telepram settings
 
+
+
+
 ###########################PORTFOLIO#########################
 
-
+page_language_choices = (
+    ("ENG", "ENG"),
+    ("FR", "FR"),
+    ("RUS","RUS"),
+    ("IT","IT"),)
 
 class Service(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
     ordering_rate = models.IntegerField(default=1, verbose_name='ordering', validators=[MinValueValidator(1),
@@ -42,6 +51,8 @@ class Service(models.Model):
         return reverse('service',kwargs={"slug":self.slug})
 
 class Work(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     work_title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
     ordering_rate = models.IntegerField(default=1, verbose_name='ordering', validators=[MinValueValidator(1),
@@ -63,6 +74,8 @@ class Work(models.Model):
         return reverse('work',kwargs={"slug":self.slug})
 
 class AboutMe(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     myname = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
 
@@ -83,6 +96,8 @@ class AboutMe(models.Model):
         return reverse('aboutme',kwargs={"slug":self.slug})
 
 class Cvdata(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     mycvname = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
     cvmail = models.CharField(max_length=100)
@@ -106,6 +121,8 @@ class Cvdata(models.Model):
 
 
 class Intro(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     intro_name = models.CharField(max_length=100)
     intro = models.TextField(blank=True)
     presentation = models.TextField(blank=True)
@@ -130,6 +147,8 @@ class Intro(models.Model):
 
 ###########################CV################################
 class Language(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     lang = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
     lang_percent = models.IntegerField(default=0,verbose_name='lang_percent', validators=[MinValueValidator(0),
@@ -143,6 +162,8 @@ class Language(models.Model):
         return reverse('language',kwargs={"slug":self.slug})
 
 class Skill(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     skill = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
     skill_percent = models.IntegerField(default=0,verbose_name='lang_percent')
@@ -156,6 +177,8 @@ class Skill(models.Model):
         return reverse('skill',kwargs={"slug":self.slug})
 
 class Experience(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     years = models.CharField(max_length=100)
     company = models.CharField(max_length=200)
     description = models.TextField(blank=False)
@@ -178,6 +201,8 @@ class Experience(models.Model):
 
 
 class Education(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     years = models.CharField(max_length=100, blank=False)
     degree = models.CharField(max_length=200, blank=False)
     establishment = models.CharField(max_length=200, blank=False)
@@ -200,6 +225,8 @@ class Education(models.Model):
 
 
 class Interests(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
     interest = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, verbose_name='url', unique=True)
     icon = models.CharField(max_length=1000)

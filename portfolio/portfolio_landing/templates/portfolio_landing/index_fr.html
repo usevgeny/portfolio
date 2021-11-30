@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="view-port" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %} " />
+    <link rel="stylesheet" href="{% static 'modal_sms.css' %} " />
+    <link rel="stylesheet" href="{% static 'modal_error.css' %} " />
+
+</head>
+<body>
+<div class="toggle" onclick="toggleMenu()"></div>
+
+<section class="banner" id="home">
+    <div class="imgSidebar">
+        <img src="{{ intro.0.my_photo.url }}">
+    </div>
+    <div class="contentBx">
+        <div>
+        <h5 class="logoText">My_Portfolio</h5>
+            </div>
+        <div>
+            <h4><span>Hello</span> I'm </h4>
+            <h2>{{ intro.0.intro_name }}</h2>
+            <h4>{{ intro.0.intro }}</h4>
+            <p> {{ intro.0.presentation }}</p>
+                <br><br>
+            <a href="#about" class="btn">About Me</a>
+
+        </div>
+
+        <ul class="sci">
+            {% if intro.0.linked_in_link  %}
+        <li><a href="{{ intro.0.linked_in_link }}"><img src="{% static 'images/linkedin-square.png' %}"  width="50px;"></a></li>
+        {% endif  %}
+
+            {% if intro.0.github_link  %}
+            <li><a href="{{ intro.0.github_link }}"><img  src="{% static 'images/github.png' %}" width="50px;"></a></li>
+        {% endif  %}
+{% if intro.0.insta_link  %}
+            <li><a href="{{ intro.0.insta_link }}"><img src="{% static 'images/black-instagram.png' %}"  width="50px;"></a></li>
+        {% endif  %}
+             {% if telegram_status  %}
+
+            <li><a href="#" onclick="return openModal();" ><img  src="{% static 'images/telegram-black.png' %}" width="50px;"></a></li>
+        {% endif  %}
+
+    </ul>
+
+    </div>
+
+
+
+
+</section>
+{% if aboutme %}
+<section class="about" id="about">
+
+    <div class="title white">
+        <h2>About</h2>
+        <p>
+            {{ aboutme.0.aboutmetitle }}
+        </p>
+    </div>
+    <div class="content">
+        <div class="textBx1">
+            <p>
+
+            {{ aboutme.0.description }}
+            </p>
+        </div>
+        <div class="imgBx">
+            <img  src="{{ aboutme.0.my_photo.url }}">
+
+        </div>
+
+    </div>
+</section>
+{% endif %}
+{% if services %}
+<section class="services" id="services">
+
+    <div class="title">
+
+        <h2>Services</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+    </div>
+    <div class="content">
+        {% for service in services %}
+        <div class="servicesBx">
+            <img src="{{ service.photo.url }}">
+            <h2>{{ service.title }}</h2>
+                   <p>
+            {{ service.description }}
+        </p>
+        </div>
+        {% endfor %}
+
+    </div>
+
+
+</section>
+{% endif %}
+{% if works %}
+<section class="work" id="work">
+ <div class="title">
+        <h2>Recent works</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+    </div>
+    <div class="content">
+{% for work in works %}
+<div class="workBx">
+    <div class="imgBx">
+        {% if work.work_photo %}
+        <img src="{{ work.work_photo.url }}">
+        {% else %}
+        <img  src="{% static 'images/code.png' %}" width="50px;">
+        {% endif %}
+    </div>
+    <div class="textBx">
+        <h3>{{ work.work_title }}</h3>
+    </div>
+</div>
+{% endfor %}
+
+    </div>
+
+</section>
+{% endif %}
+<section class="contact" id="contact">
+
+ <div class="title white">
+        <h2>Contact</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+        </p>
+    </div>
+    <div class="contactForm">
+        <form action="{% url 'index' %}" method="post">
+                                        {% csrf_token %}
+        <div class="row">
+            <div class="col50">
+                {{ email_form.first_name }}
+                {{ email_form.first_name.errors }}
+                {% comment %}
+                <input type="text" name="" placeholder="First Name">
+                {% endcomment %}
+            </div>
+             <div class="col50">
+                 {{ email_form.last_name }}
+                 {{ email_form.last_name.errors }}
+                 {% comment %}
+                <input type="text" name="" placeholder="Last Name">
+                 {% endcomment %}
+            </div>
+        </div>
+        <div class="row">
+             <div class="col50">
+                  {{ email_form.mail }}
+                 {{ email_form.mail.errors }}
+
+                 {% comment %}
+                <input type="text" name="" placeholder="Email">
+                 {% endcomment %}
+            </div>
+             <div class="col50">
+                  {{ email_form.mobile_number }}
+                 {{ email_form.mobile_number.errors }}
+                 {% comment %}
+                <input type="text" name="" placeholder="Mobile Number">
+                 {% endcomment %}
+            </div>
+        </div>
+
+                <div class="row">
+            <div class="col100">
+                {{ email_form.message_text }}
+                 {{ email_form.message_text.errors }}
+
+                {% comment %}
+                <textarea placeholder="Message">
+
+                </textarea>
+                {% endcomment %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col100">
+                <input type="submit" value="send" name="send_mail">
+            </div>
+        </div>
+        </form>
+
+        </div>
+
+</section>
+<div class="copyright">
+    <p>
+        Copyright 2021 online Tutorials. All Right Reserved.
+    </p>
+</div>
+
+<div class="sidebar">
+
+<ul class="menu">
+    <li><a href="#home" onclick="toggleMenu();">Accueil</a></li>
+    {% if intro %}
+    <li><a href="#about" onclick="toggleMenu();">À propos</a></li>
+    {% endif %}
+    {% if services %}
+    <li><a href="#services" onclick="toggleMenu();">Services</a></li>
+    {% endif %}
+    {% if works %}
+    <li><a href="#work" onclick="toggleMenu();">Réalisations</a></li>
+    {% endif %}
+    <li><a  href="{% url 'cv_page_fr' %}" onclick="toggleMenu();">CV</a></li>
+
+    <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+</ul>
+
+</div>
+
+
+{% include 'inc/_modal_sms_fr.html' %}
+{% include 'inc/_modal_errors_fr.html' %}
+{% include 'inc/_modal_sms_script.html' %}
+
+{% if sms_errors %}
+{% include 'inc/_modal_errors_script.html' %}
+{% endif %}
+
+<script>
+    function toggleMenu(){
+    const menuToggle = document.querySelector('.toggle');
+    const sidebar = document.querySelector('.sidebar');
+    menuToggle.classList.toggle('active');
+    sidebar.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>

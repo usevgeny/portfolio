@@ -17,9 +17,15 @@
 
     <div class="title white">
         <h2>Email</h2>
+        {% if email_status == 'success' %}
         <p>
-            {{ email_status }}
+            Email, successfully sent to our team, we will contact you shortly!
         </p>
+        {% else %}
+           <p>
+            Failed to send email, please contact us on evgeny@usachev.fr
+        </p>
+        {% endif %}
     </div>
     <div class="content">
         <div class="textBx1">
