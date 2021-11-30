@@ -96,7 +96,7 @@ def send_sms_func(request):
 
 
 
-def index(request, template_to_be_rendered='portfolio_landing/index.html'):
+def index(request, template_to_be_rendered='portfolio_landing/ENG/index.html'):
 
     email_form=EmailForm()
     smsform = SendChatForm()
@@ -133,6 +133,15 @@ def index(request, template_to_be_rendered='portfolio_landing/index.html'):
     if request.method == 'POST':
         req_index_post = dict(request.POST.items())
 
+        try:
+            detected_lang = detect_lang(request)
+            if detected_lang in available_languages:
+                page_language = detected_lang
+            else:
+                page_language = 'ENG'
+        except Exception as e:
+            page_language = 'ENG'
+
         if 'send_mail' in req_index_post:
             email_form = EmailForm(request.POST)
 
@@ -157,7 +166,7 @@ def index(request, template_to_be_rendered='portfolio_landing/index.html'):
                 else:
                     context = {"email_status": 'fail'}
                     #context={"email_status": 'Failed to send email, please contact us on support@usachev.fr'}
-
+                print(f'portfolio_landing/{page_language}/email_status.html')
                 return render(request, f'portfolio_landing/{page_language}/email_status.html',
                               context=context)
 
@@ -218,10 +227,10 @@ def index(request, template_to_be_rendered='portfolio_landing/index.html'):
     return render(request, template_to_be_rendered, context=context)
 
 def index_fr(request):
-    return index(request, template_to_be_rendered='portfolio_landing/index_fr.html')
+    return index(request, template_to_be_rendered='portfolio_landing/FR/index.html')
 
 
-def cv_page(request, template_to_be_rendered='portfolio_landing/CV.html'):
+def cv_page(request, template_to_be_rendered='portfolio_landing/ENG/CV.html'):
     try:
         detected_lang = detect_lang(request)
         if detected_lang in available_languages:
@@ -276,4 +285,4 @@ def cv_page(request, template_to_be_rendered='portfolio_landing/CV.html'):
 
 
 def cv_page_fr(request):
-    return cv_page(request)
+    return cv_page(request,template_to_be_rendered='portfolio_landing/FR/CV.html')

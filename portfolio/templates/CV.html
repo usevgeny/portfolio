@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="view-port" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="{% static 'cvstyle.css' %} " />
+
+    <link rel="stylesheet" href="{% static 'fontawesome-free-5.15.4-web/css/all.css' %} ">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-5.15.4-web/css/brands.css' %} ">
+
+
+
+
+
+</head>
+<body>
+<div class="container">
+    <div class="left_Side">
+        <div class="profileText">
+            <div class="imgBx">
+
+                {% if selected_cv.0.my_cv_photo %}
+                <img src="{{ selected_cv.0.my_cv_photo.url }}">
+                {% else %}
+                <img src="{% static 'images/cv.JPG'%}">
+                {% endif %}
+
+            </div>
+            <h2>{{ selected_cv.0.mycvname }}<br><span>{{ selected_cv.0.myprofile }}</span></h2>
+
+        </div>
+        <div class="contactInfo">
+            <h3 class="title">{% block contact %}{% endblock %}</h3>
+            <ul>
+                <li>
+                    <span class="icon"><i class="fa fa-envelope"></i></span>
+                    <a href="mailto: {{ selected_cv.0.cvmail }}"><span class="text">{{ selected_cv.0.cvmail }}</span></a>
+                </li>
+
+                <li>
+                    <span class="icon"><i class="fa fa-globe"></i></span>
+                    <a href="{{ selected_cv.0.cvwebsite }}"><span class="text">{{ selected_cv.0.cvwebsite }}</span></a>
+                </li>
+
+                <li>
+                    <span class="icon"><i class="fa fa-address-card"></i></span>
+                    <a href="{{ selected_cv.0.cvlinkedin }}"><span class="text">www.linkedin.com</span></a>
+                </li>
+
+
+
+                <li>
+                    <span class="icon"><i class="fa-regular fa-map"></i></span>
+                    <span class="text">{{ selected_cv.0.cvlocation }}</span>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="contactInfo language">
+            {% if language_set %}
+            <h3 class="title">{% block language %}{% endblock %}</h3>
+            <ul>{% for item in language_set %}
+                <li>
+                    <span class="text">{{ item.lang }}</span>
+                    <div class="percent">
+                         <div style="width: {{ item.lang_percent }}%;"></div>
+                     </div>
+                </li>
+                {% endfor %}
+            </ul>
+             {% endif %}
+        </div>
+
+
+        <div class="contactInfo education">
+            {% if education_set %}
+
+            <h3 class="title">{% block education %}{% endblock %}</h3>
+
+            <ul>
+                {% for item in education_set %}
+                <li>
+                    <h5>{{ item.years }}</h5>
+                    <h4>{{ item.degree }}</h4>
+                    <h4>{{ item.description }}</h4>
+                    <h4>{{ item.establishment }}</h4>
+                </li>
+                {% endfor %}
+
+            </ul>
+            {% endif %}
+        </div>
+
+
+
+    </div>
+    <div class="right_Side">
+
+        <div class="about">
+            <h2 class="title2">{% block profile %}{% endblock %}</h2>
+            <p>
+                {{ selected_cv.0.description }}
+            </p>
+        </div>
+        <div class="about">
+            {% if experience_set %}
+            <h2 class="title2">{% block experience %}{% endblock %}</h2>
+            {% for item in experience_set %}
+            <div class="box">
+                <div class="year_company">
+                    <h5>{{ item.years }}</h5>
+                    <h5>{{ item.company }}</h5>
+                </div>
+                <div class="text">
+                    <h4>
+                        {{ item.position }}
+                    </h4>
+                    <p>
+                       {{ item.description }}
+
+                    </p>
+                </div>
+            </div>
+                {% endfor %}
+                {% endif %}
+        </div>
+
+
+
+        <div class="about skills">
+            {% if skill_set %}
+            <h2 class="title2">{% block skills %}{% endblock %}</h2>
+            {% for item in skill_set %}
+            <div class="box">
+                <h4>{{ item.skill }}</h4>
+                <div class="percent">
+                    <div style="width:{{ item.skill_percent }}%"></div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+        </div>
+
+        <div class="about interest">
+            {% if interest_set %}
+             <h2 class="title2">{% block interests %}{% endblock %}</h2>
+            <ul>
+                {% for item in interest_set %}
+                <li><i class="fa {{ item.icon }}"></i> {{ item.interest }}</li>
+                {% endfor %}
+
+            </ul>
+            {% endif %}
+
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+</body>
+</html>

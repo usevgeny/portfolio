@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% block logo %}
+Mon_portfolio
+{% endblock %}
+
+{% block hello %}
+<span>Salut</span> Je suis
+{% endblock %}
+
+{% block aboutmebtn %}
+À propos de moi
+{% endblock %}
+
+{% block about %}
+À propos
+{% endblock %}
+
+{% block services %}
+Services
+{% endblock %}
+
+{% block services_intro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block works %}
+Réalisations récentes
+{% endblock %}
+
+{% block worksintro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block contact %}
+Contact
+{% endblock %}
+{% block contactintro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block sendbtn %}Envoi{% endblock%}
+
+{% block sidebarmenu %}
+<ul class="menu">
+    <li><a href="#home" onclick="toggleMenu();">Accueil</a></li>
+    {% if intro %}
+    <li><a href="#about" onclick="toggleMenu();">À propos</a></li>
+    {% endif %}
+    {% if services %}
+    <li><a href="#services" onclick="toggleMenu();">Services</a></li>
+    {% endif %}
+    {% if works %}
+    <li><a href="#work" onclick="toggleMenu();">Réalisations</a></li>
+    {% endif %}
+    <li><a  href="{% url 'cv_page_fr' %}" onclick="toggleMenu();">CV</a></li>
+
+    <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+
+</ul>
+{% endblock%}

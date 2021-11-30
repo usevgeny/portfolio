@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% block logo %}
+My_portfolio
+{% endblock %}
+
+{% block hello %}
+<span>Hello</span> I'm
+{% endblock %}
+
+{% block aboutmebtn %}
+About Me
+{% endblock %}
+
+{% block about %}
+About
+{% endblock %}
+
+{% block services %}
+Services
+{% endblock %}
+
+{% block services_intro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block works %}
+Recent works
+{% endblock %}
+
+{% block worksintro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block contact %}
+Contact
+{% endblock %}
+{% block contactintro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block sendbtn %}send{% endblock%}
+
+{% block sidebarmenu %}
+<ul class="menu">
+    <li><a href="#home" onclick="toggleMenu();">Home</a></li>
+    {% if intro %}
+    <li><a href="#about" onclick="toggleMenu();">About</a></li>
+    {% endif %}
+    {% if services %}
+    <li><a href="#services" onclick="toggleMenu();">Services</a></li>
+    {% endif %}
+    {% if works %}
+    <li><a href="#work" onclick="toggleMenu();">Work</a></li>
+    {% endif %}
+    <li><a  href="{% url 'cv_page' %}" onclick="toggleMenu();">CV</a></li>
+
+    <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+</ul>
+{% endblock%}
