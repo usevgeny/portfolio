@@ -7,8 +7,12 @@ My_portfolio
 {% block hello %}
 <span>Hello</span> I'm
 {% endblock %}
-
+{% block otherlinks %}
+<a href="#" onclick="return openModal();" ><span class="linkchat">Let’s chat!</span></a>
+{% endblock %}
 {% block aboutmebtn %}
+
+
 About Me
 {% endblock %}
 
@@ -21,7 +25,7 @@ Services
 {% endblock %}
 
 {% block services_intro %}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+Services adapted to meet your needs.
 {% endblock %}
 
 {% block works %}
@@ -29,14 +33,14 @@ Recent works
 {% endblock %}
 
 {% block worksintro %}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+My recent projects
 {% endblock %}
 
 {% block contact %}
 Contact
 {% endblock %}
 {% block contactintro %}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+Leave me a message and I will contact you shortly
 {% endblock %}
 
 {% block form %}

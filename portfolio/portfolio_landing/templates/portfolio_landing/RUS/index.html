@@ -1,12 +1,12 @@
 {% extends 'index.html' %}
 {% block logo %}
-Mon_portfolio
+Мое_портфолио
 {% endblock %}
 
 {% block hello %}
 <span>Привет!</span> Меня зовут
 {% endblock %}
-
+{% block otherlinks %} <a href="#" onclick="return openModal();" ><span class="linkchat">Напиши мне!</span></a>{% endblock %}
 {% block aboutmebtn %}
 Обо мне
 {% endblock %}
@@ -35,7 +35,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
 Контакты
 {% endblock %}
 {% block contactintro %}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+Оставь свои координаты, и я свяжусь с тобой!
 {% endblock %}
 
 

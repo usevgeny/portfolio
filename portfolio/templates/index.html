@@ -29,7 +29,8 @@
             <h4>{% block hello %}{% endblock %}</h4>
             <h2>{{ intro.0.intro_name }}</h2>
             <h4>{{ intro.0.intro }}</h4>
-            <p> {{ intro.0.presentation }}</p>
+            <p> {{ intro.0.presentation|linebreaks }} {% block otherlinks %} {% endblock %}</p>
+
                 <br><br>
             <a href="#about" class="btn">{% block aboutmebtn %}{% endblock %}</a>
 
@@ -130,20 +131,22 @@
 
     </div>
     <div class="textBx">
+        <div>
         {% if work.work_link %}
         <a href="{{ work.work_link }}" >
-        <h3>{{ work.work_title }}</h3>
+
+            <h3>{{ work.work_title }}</h3>
+
         </a>
+            {% else %}
+        <h3>{{ work.work_title }}</h3>
+            {% endif %}
+        </div>
+        <div class="work_description">
         {% if work.work_description %}
         <p>{{ work.work_description }}</p>
         {% endif %}
-            {% else %}
-        <h3>{{ work.work_title }}</h3>
-        {% if work.work_description %}
-        <br>
-        <h3>{{ work.work_description }}</h3>
-        {% endif %}
-        {% endif %}
+        </div>
     </div>
 </div>
 {% endfor %}
