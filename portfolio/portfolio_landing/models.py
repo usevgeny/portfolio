@@ -180,6 +180,9 @@ class Experience(models.Model):
     page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
                                  verbose_name='LANGUAGE:', default='ENG')
     years = models.CharField(max_length=100)
+    ordering_rate = models.IntegerField(default=1, verbose_name='ordering', validators=[MinValueValidator(1),
+                                                                                        MaxValueValidator(100)])
+
     company = models.CharField(max_length=200)
     description = models.TextField(blank=False)
     position = models.CharField(max_length=200)

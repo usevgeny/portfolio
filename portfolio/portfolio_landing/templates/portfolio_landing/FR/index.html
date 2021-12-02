@@ -65,8 +65,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
   <a class="nav-link dropbtn"  onclick="dopdownOnClick(this.id)" id="ordersdrop_btn">Langue</a>
   <div drop-contents-target class="dropdown_content_on_click" id="ordersdrop_content">
     <a class="dropdown-item" href="{% url 'index' %}">ENG</a>
-    <a class="dropdown-item" href="{% url 'index_rus' %}">RUS</a>
-
+    {% comment %}
+      <a class="dropdown-item" href="{% url 'index_rus' %}">RUS</a>
+    {% endcomment %}
   </div>
 </div>
 

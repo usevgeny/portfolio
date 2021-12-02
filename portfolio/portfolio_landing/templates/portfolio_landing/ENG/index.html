@@ -70,8 +70,9 @@ Leave me a message and I will contact you shortly
   <a class="nav-link dropbtn"  onclick="dopdownOnClick(this.id)" id="ordersdrop_btn">Language</a>
   <div drop-contents-target class="dropdown_content_on_click" id="ordersdrop_content">
     <a class="dropdown-item" href="{% url 'index_fr' %}">FR</a>
-    <a class="dropdown-item" href="{% url 'index_rus' %}">RUS</a>
-
+    {% comment %}
+      <a class="dropdown-item" href="{% url 'index_rus' %}">RUS</a>
+    {% endcomment %}
   </div>
 </div>
 

@@ -263,7 +263,7 @@ def cv_page(request, template_to_be_rendered='portfolio_landing/ENG/CV.html'):
     except Exception as e:
         skill_set = []
     try:
-        experience_set = Experience.objects.all().filter(page_lang=page_language).filter(is_published=True).order_by('-years')
+        experience_set = Experience.objects.all().filter(page_lang=page_language).filter(is_published=True).order_by('ordering_rate')
     except Exception as e:
         experience_set = []
     try:

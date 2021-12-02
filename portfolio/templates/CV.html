@@ -17,6 +17,8 @@
 
 </head>
 <body>
+<div class="main_content">
+    <div class="cv_nav">{% block back %}{% endblock %}</div>
 <div class="container">
     <div class="left_Side">
         <div class="profileText">
@@ -53,7 +55,7 @@
 
 
                 <li>
-                    <span class="icon"><i class="fa-regular fa-map"></i></span>
+                    <span class="icon"><i class="fas fa-map"></i></span>
                     <span class="text">{{ selected_cv.0.cvlocation }}</span>
                 </li>
 
@@ -166,5 +168,6 @@
     </div>
 
 </div>
+    </div>
 </body>
 </html>

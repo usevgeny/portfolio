@@ -110,8 +110,8 @@ class InterestsAdmin(admin.ModelAdmin):
 
 class ExperienceAdmin(admin.ModelAdmin):
     list_display = (
-    'page_lang', 'years', 'company', 'position', 'description', 'slug', 'meta_desc', 'meta_keys', 'is_published',)
-    fields = ('page_lang','years','company','position','description','slug','meta_desc','meta_keys','is_published',)
+    'page_lang', 'years', 'ordering_rate','company', 'position', 'description', 'slug', 'meta_desc', 'meta_keys', 'is_published',)
+    fields = ('page_lang','years','ordering_rate','company','position','description','slug','meta_desc','meta_keys','is_published',)
     save_as = True
 
 class EducationAdmin(admin.ModelAdmin):

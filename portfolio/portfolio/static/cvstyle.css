@@ -17,6 +17,28 @@ align-items:center;
 min-height: 100vh;
 }
 
+.main_content
+{
+flow-direction:column;
+}
+
+.cv_nav
+{
+text-align:right;
+margin-right:50px;
+margin-top:10px;
+}
+
+.cv_nav a
+{   text-decoration:none;
+    text-transform: uppercase;
+    color: #2a7da2;
+}
+.cv_nav a:hover
+{
+color:#000;
+}
+
 .container
 {
 position:relative;
