@@ -1,4 +1,5 @@
-portfolio_db/**
-.env
-db.sqlite
-media/**
+portfolio/portfolio_db/**
+portfolio/.env
+portfolio/db.sqlite3
+portfolio/media/**
+venv/**
