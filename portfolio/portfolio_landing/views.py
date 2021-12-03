@@ -97,6 +97,9 @@ def send_sms_func(request):
 
 
 def index(request, template_to_be_rendered='portfolio_landing/ENG/index.html'):
+    used_host=request.__dict__['META']['HTTP_HOST']
+    if 'mobile' in used_host:
+        template_to_be_rendered = f"{'/'.join(template_to_be_rendered.split('/')[:-1])}/index_mobile.html"
 
     email_form=EmailForm()
     smsform = SendChatForm()
@@ -235,6 +238,10 @@ def index_rus(request):
 
 
 def cv_page(request, template_to_be_rendered='portfolio_landing/ENG/CV.html'):
+    used_host = request.__dict__['META']['HTTP_HOST']
+    if 'mobile' in used_host:
+        template_to_be_rendered = f"{'/'.join(template_to_be_rendered.split('/')[:-1])}/CV_mobile.html"
+
     try:
         detected_lang = detect_lang(request)
         if detected_lang in available_languages:

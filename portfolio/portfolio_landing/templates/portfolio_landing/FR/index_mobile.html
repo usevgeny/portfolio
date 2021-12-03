@@ -1,0 +1,83 @@
+{% extends 'index_mobile.html' %}
+{% block logo %}
+Mon_portfolio
+{% endblock %}
+
+{% block hello %}
+<span>Salut</span> Je suis
+{% endblock %}
+{% block otherlinks %} <a href="#" onclick="return openModal();" ><span class="linkchat">Écrivez-moi!</span></a>{% endblock %}
+{% block aboutmebtn %}
+À propos de moi
+{% endblock %}
+
+{% block about %}
+À propos
+{% endblock %}
+
+{% block services %}
+Services
+{% endblock %}
+
+{% block services_intro %}
+Des prestations adaptées à vos besoins.
+{% endblock %}
+
+{% block works %}
+Réalisations récentes
+{% endblock %}
+
+{% block worksintro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block contact %}
+Contact
+{% endblock %}
+{% block contactintro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block form %}
+<form action="{% url 'index_fr' %}" method="post">
+{% endblock %}
+
+
+{% block sendbtn %}Envoi{% endblock%}
+
+{% block sidebarmenu %}
+<ul class="menu">
+    <li><a href="#home" onclick="toggleMenu();">Accueil</a></li>
+    {% if intro %}
+    <li><a href="#about" onclick="toggleMenu();">À propos</a></li>
+    {% endif %}
+    {% if services %}
+    <li><a href="#services" onclick="toggleMenu();">Services</a></li>
+    {% endif %}
+    {% if works %}
+    <li><a href="#work" onclick="toggleMenu();">Réalisations</a></li>
+    {% endif %}
+    <li><a  href="{% url 'cv_page_fr' %}" onclick="toggleMenu();">CV</a></li>
+
+    <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+    <li>
+        <div class="dropdown_on_click">
+  <a class="nav-link dropbtn"  onclick="dopdownOnClick(this.id)" id="ordersdrop_btn">Langue</a>
+  <div drop-contents-target class="dropdown_content_on_click" id="ordersdrop_content">
+    <a class="dropdown-item" href="{% url 'index' %}">ENG</a>
+    {% comment %}
+      <a class="dropdown-item" href="{% url 'index_rus' %}">RUS</a>
+    {% endcomment %}
+  </div>
+</div>
+
+    </li>
+
+</ul>
+{% endblock%}
+
+{% block modal %}
+{% include 'inc/_modal_sms_fr.html' %}
+{% include 'inc/_modal_errors_fr.html' %}
+
+{% endblock %}

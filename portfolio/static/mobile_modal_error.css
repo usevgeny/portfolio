@@ -1,0 +1,135 @@
+
+  .modal_error{
+  color:#fff;
+    position:fixed;
+    overflow:hidden;
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+
+    border-radius: 10px;
+    width: 410px;
+    height: 250px;
+    max-width: 80%;
+
+    background:rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-right: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+
+
+
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(25px);
+    box-shadow: 0 -10px 10px  rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+
+
+
+
+    }
+
+
+.modal_error.active {
+transform: translate(-50%, -50%) scale(1);
+
+}
+
+
+.modal_error-header{
+    padding:10px 15px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.modal_error-header .title {
+font-size: 1.25rem;
+font-weight: bold;
+}
+
+
+
+
+.modal_error-header .close-button {
+
+cursor:pointer;
+border: none;
+outline: none;
+background :none;
+font-size: 1.25rem;
+font-weight: bold;
+color:#fff;
+
+}
+
+
+.modal_error_body{
+padding:3px 10px;
+overflow: scroll;
+}
+
+
+.modal_error_body::before
+{
+
+content:'';
+position:absolute;
+top:0;
+left:-40%;
+width:100%;
+height:100%;
+background: rgba(255,255,255,0.05);
+pointer-events:none;
+transform:skewX(-15deg);
+
+
+}
+
+
+
+#overlay_error {
+    position: fixed;
+    opacity:0;
+    transition: 200ms ease-in-out;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0,0,0,0.3);
+    pointer-events: none;
+}
+
+#overlay_error.active{
+opacity: 1;
+pointer-events: all;
+z-index:3;
+}
+
+.button_modal
+{
+cursor:pointer;
+border: none;
+outline: none;
+display: inline-block;
+padding: 10px 30px;
+background-color: #B375A1;
+border-radius: 40px;
+color: #fff;
+text-decoration: none;
+font-weight:500;
+letter-spacing: 1px;
+}
+
+.button_modal:hover
+{
+background:rgba(255,255,255,0.1);
+}
+
+
+.errorlist{
+margin-left:10px;}

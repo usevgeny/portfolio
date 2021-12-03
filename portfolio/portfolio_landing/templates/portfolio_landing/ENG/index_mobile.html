@@ -1,0 +1,90 @@
+
+{% extends 'index_mobile.html' %}
+{% block logo %}
+My_portfolio
+{% endblock %}
+
+{% block hello %}
+<span>Hello</span> I'm
+{% endblock %}
+{% block otherlinks %}
+<a href="#" onclick="return openModal();" ><span class="linkchat">Let’s chat!</span></a>
+{% endblock %}
+{% block aboutmebtn %}
+
+
+About Me
+{% endblock %}
+
+{% block about %}
+About
+{% endblock %}
+
+{% block services %}
+Services
+{% endblock %}
+
+{% block services_intro %}
+Services adapted to meet your needs.
+{% endblock %}
+
+{% block works %}
+Recent works
+{% endblock %}
+
+{% block worksintro %}
+My recent projects
+{% endblock %}
+
+{% block contact %}
+Contact
+{% endblock %}
+{% block contactintro %}
+Leave me a message and I will contact you shortly
+{% endblock %}
+
+{% block form %}
+<form action="{% url 'index' %}" method="post">
+{% endblock %}
+
+
+{% block sendbtn %}send{% endblock%}
+
+{% block sidebarmenu %}
+<ul class="menu">
+    <li><a href="#home" onclick="toggleMenu();">Home</a></li>
+    {% if intro %}
+    <li><a href="#about" onclick="toggleMenu();">About</a></li>
+    {% endif %}
+    {% if services %}
+    <li><a href="#services" onclick="toggleMenu();">Services</a></li>
+    {% endif %}
+    {% if works %}
+    <li><a href="#work" onclick="toggleMenu();">Work</a></li>
+    {% endif %}
+    <li><a  href="{% url 'cv_page' %}" onclick="toggleMenu();">CV</a></li>
+
+    <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+    <li>
+        <div class="dropdown_on_click">
+  <a class="nav-link dropbtn"  onclick="dopdownOnClick(this.id)" id="ordersdrop_btn">Language</a>
+  <div drop-contents-target class="dropdown_content_on_click" id="ordersdrop_content">
+    <a class="dropdown-item" href="{% url 'index_fr' %}">FR</a>
+    {% comment %}
+      <a class="dropdown-item" href="{% url 'index_rus' %}">RUS</a>
+    {% endcomment %}
+  </div>
+</div>
+
+    </li>
+
+
+
+</ul>
+{% endblock%}
+
+{% block modal %}
+{% include 'inc/_modal_sms.html' %}
+{% include 'inc/_modal_errors.html' %}
+
+{% endblock %}

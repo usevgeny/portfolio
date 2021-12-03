@@ -1,0 +1,83 @@
+{% extends 'index_mobile.html' %}
+{% block logo %}
+Мое_портфолио
+{% endblock %}
+
+{% block hello %}
+<span>Привет!</span> Меня зовут
+{% endblock %}
+{% block otherlinks %} <a href="#" onclick="return openModal();" ><span class="linkchat">Напиши мне!</span></a>{% endblock %}
+{% block aboutmebtn %}
+Обо мне
+{% endblock %}
+
+{% block about %}
+Обо мне
+{% endblock %}
+
+{% block services %}
+Услуги
+{% endblock %}
+
+{% block services_intro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block works %}
+Мои проекты
+{% endblock %}
+
+{% block worksintro %}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
+{% endblock %}
+
+{% block contact %}
+Контакты
+{% endblock %}
+{% block contactintro %}
+Оставь свои координаты, и я свяжусь с тобой!
+{% endblock %}
+
+
+{% block form %}
+<form action="{% url 'index_rus' %}" method="post">
+{% endblock %}
+
+
+{% block sendbtn %}Отправить{% endblock%}
+
+{% block sidebarmenu %}
+<ul class="menu">
+    <li><a href="#home" onclick="toggleMenu();">Главная</a></li>
+    {% if intro %}
+    <li><a href="#about" onclick="toggleMenu();">Обо мне</a></li>
+    {% endif %}
+    {% if services %}
+    <li><a href="#services" onclick="toggleMenu();">Услуги</a></li>
+    {% endif %}
+    {% if works %}
+    <li><a href="#work" onclick="toggleMenu();">Réalisations</a></li>
+    {% endif %}
+    <li><a  href="{% url 'cv_page_rus' %}" onclick="toggleMenu();">Резюме</a></li>
+
+    <li><a href="#contact" onclick="toggleMenu();">Контакты</a></li>
+    <li>
+        <div class="dropdown_on_click">
+  <a class="nav-link dropbtn"  onclick="dopdownOnClick(this.id)" id="ordersdrop_btn">Язык</a>
+  <div drop-contents-target class="dropdown_content_on_click" id="ordersdrop_content">
+    <a class="dropdown-item" href="{% url 'index_fr' %}">FR</a>
+    <a class="dropdown-item" href="{% url 'index' %}">ENG</a>
+
+  </div>
+</div>
+
+    </li>
+
+</ul>
+{% endblock%}
+
+{% block modal %}
+{% include 'inc/_modal_sms_rus.html' %}
+{% include 'inc/_modal_errors_rus.html' %}
+
+{% endblock %}

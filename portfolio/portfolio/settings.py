@@ -33,8 +33,7 @@ DEBUG = config('DEBUG', cast=bool, default=False)
 
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = True
-ALLOWED_HOSTS = ['localhost','127.0.0.1',]
-
+ALLOWED_HOSTS = ['localhost','usachev.fr.local','mobile.usachev.fr.local','127.0.0.1','0.0.0.0','mobile.0.0.0.0','mobile.localhost','localhost.127.0.0.1']
 
 # Application definition
 

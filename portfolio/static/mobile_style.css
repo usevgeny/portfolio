@@ -624,6 +624,129 @@ margin: 10px;
 font-size: 1em;
 }
 
+
+
+
+.intro p
+{
+font-size:1.3em;
+}
+
+.sidebar {
+font-size: 7em;
+}
+
+
+
+.intro p
+{
+font-size:4em;
+}
+
+
+.banner .contentBx h4
+{
+font-size:3.5em;
+color: #333;
+font-weight: 300;
+
+}
+
+.banner .contentBx h4 span
+{
+color:#347ca8;
+font-size:3.5em;
+font-weight: 700;
+
+}
+
+
+.linkchat
+{
+font-size: 5em;
+}
+
+.services .content .servicesBx,
+.work .content .workBx
+{
+padding: 30px 20px;
+max-width: 100%;
+width: 100%;
+margin: 10px;
+height: 700px!important;
+font-size: 1em;
+}
+
+.services .content .servicesBx img
+
+{
+    height: 300px;
+    max-width: 350px;}
+
+.btn
+{
+padding: 50px 200px;
+font-size:3em;
+}
+.services h2, .work h2 , .contact h2, .about h2
+{
+font-size: 5em;
+}
+
+.services p, .work p, .contact p, .about p
+{
+font-size: 3em;
+}
+
+.services .content .servicesBx h2
+{
+font-size: 3em;
+}
+
+
+.contact .contactForm .row input, .contact .contactForm .row textarea
+{
+font-size: 56px;
+}
+
+.contact .contactForm .row input[type="submit"]
+{
+max-width: 450px;
+}
+
+.contact .contactForm .row textarea {
+    height: 400px;
+}
+
+
+
+.contact {
+    padding: 30px 20px;
+    max-width: 100%;
+    width: 100%;
+
+    font-size: 1em;
+}
+
+
+
+
+
+.work .content .workBx .textBx h3 {
+    font-size: 4em;
+}
+
+
+
+
+.modal_sms{
+
+width: 80%;
+    height: 80%;
+}
+
+
+
 }
 
 @media (max-width: 500px)
@@ -637,5 +760,14 @@ width: 100%;
 margin: 10px;
 }
 
+.intro p
+{
+font-size:1.3em;
+}
+
+.sidebar {
+font-size: 2em;
+}
 
 }
+
