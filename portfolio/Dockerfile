@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   libpq-dev
 
 # Requirements are installed here to ensure they will be cached.
-COPY ./checkap_app/requirements_postgres.txt ./home/
+COPY ./portfolio/requirements_postgres.txt ./home/
 
 # Create Python Dependency and Sub-Dependency Wheels.
 RUN pip wheel --wheel-dir /usr/src/app/wheels  \
@@ -58,31 +58,15 @@ RUN mkdir -p /home/logs/
 RUN mkdir -p /home/ssl/
 #COPY ./app /home/app
 
-COPY ./checkap_app/wait.sh /wait.sh
+COPY ./portfolio/wait.sh /wait.sh
 RUN chmod +x /wait.sh
-
-#RUN chown www-data:www-data /home/app/algorito/
-#RUN mkdir -p /home/app/planning/prepared_data/
-
-#RUN chown -Rv www-data:www-data /home/app/planning/prepared_data
-#RUN chown -Rv www-data:www-data /home/app/landing/templates
-#RUN chown -Rv www-data:www-data /home/app/planning/templates
-#RUN chown -Rv www-data:www-data /home/app/static
-#Creating an environ variable to be used in appli.conf virtual host
-
-#RUN PYTHONENV=$(pip show django|sed -rn '/Location/p'|cut -f 2 -d " ")
-
 
 #preparing apache2
 
-COPY ./apache_cheсkap/appli.conf /etc/apache2/sites-available/000-default.conf
-COPY ./apache_cheсkap/apache2.conf /etc/apache2/apache2.conf
-#COPY ./apache/apache-certificate.crt /etc/apache2/certificate/
-#COPY ./apache/apache.key /etc/apache2/certificate/
-#COPY ./apache/letsencrypt/live/algorito.fr/fullchain.pem /home/ssl/fullchain.pem
-#COPY ./apache/letsencrypt/live/algorito.fr/privkey.pem /home/ssl/privkey.pem
+COPY ./apache_portfolio/appli.conf /etc/apache2/sites-available/000-default.conf
+COPY ./apache_portfolio/apache2.conf /etc/apache2/apache2.conf
 RUN  ln -s /home/app/portfolio/wsgi.py /var/www/app
 RUN a2enmod rewrite
 RUN a2enmod ssl
-EXPOSE 9000
+EXPOSE 80
 #EXPOSE 8443

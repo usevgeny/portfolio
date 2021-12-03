@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" name="view-port" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
+    <title>My Portfolio</title>
 
     <link rel="stylesheet" href="{% static 'style.css' %} " />
     <link rel="stylesheet" href="{% static 'modal_sms.css' %} " />
@@ -25,7 +25,7 @@
         <div>
         <h5 class="logoText">{% block logo %}{% endblock %}</h5>
             </div>
-        <div>
+        <div class="intro">
             <h4>{% block hello %}{% endblock %}</h4>
             <h2>{{ intro.0.intro_name }}</h2>
             <h4>{{ intro.0.intro }}</h4>
