@@ -120,7 +120,7 @@
     </div>
     <div class="content">
 {% for work in works %}
-<div class="workBx">
+<div class="workBx" {% if work.work_link %} onclick="location.href='{{ work.work_link }}';" style="cursor: pointer;" {% endif %}>
     <div class="imgBx">
 
         {% if work.work_photo %}
