@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="view-port" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="{% static 'cvstyle.css' %} " />
+
+
+    <link rel="stylesheet" href="{% static 'dropdown.css' %} " />
+
+
+
+
+
+</head>
+<body>
+<div class="main_content">
+    <div class="cv_nav">{% block back %}{% endblock %}</div>
+<div class="container">
+
+    <div class="right_Side">
+
+        <div class="about">
+            <h2 class="title2">Certificates</h2>
+
+        </div>
+        <div class="about">
+            {% if certificates %}
+            {% for certificate in certificates%}
+            <h2 class="title2"><a href="{{ certificate.certificate_link }}" style="text-decoration:none; cursor:pointer; color:#003147;"> {{certificate.certificate_name}}</a></h2>
+
+            <div class="box">
+
+                    <h5>{{ certificate.date_obtained }}</h5>
+
+
+                    <img src="{{ certificate.certificate_photo.url }}" width="900px;">
+                </div>
+            </div>
+                {% endfor %}
+                {% endif %}
+        </div>
+
+    </div>

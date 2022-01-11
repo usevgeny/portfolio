@@ -203,6 +203,15 @@ class Experience(models.Model):
         return reverse('experience',kwargs={"slug":self.slug})
 
 
+class Certificate(models.Model):
+    page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
+                                 verbose_name='LANGUAGE:', default='ENG')
+    certificate_name = models.CharField(max_length=200)
+    date_obtained = models.CharField(max_length=100, blank=False)
+    description = models.TextField(blank=True)
+    certificate_link = models.TextField(blank=True)
+    certificate_photo = models.ImageField(upload_to=f'photos/{certificate_name}', verbose_name='Img', blank=True)
+
 class Education(models.Model):
     page_lang = models.CharField(max_length=10, choices=page_language_choices, blank=False,
                                  verbose_name='LANGUAGE:', default='ENG')

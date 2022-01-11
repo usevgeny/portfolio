@@ -63,6 +63,9 @@ Leave me a message and I will contact you shortly
     <li><a href="#work" onclick="toggleMenu();">Work</a></li>
     {% endif %}
     <li><a  href="{% url 'cv_page' %}" onclick="toggleMenu();">CV</a></li>
+    {% if certificates %}
+    <li><a  href="{% url 'certificates' %}" onclick="toggleMenu();">Certificates</a></li>
+    {% endif %}
 
     <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
     <li>

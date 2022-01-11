@@ -58,6 +58,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis arcu a lacus
     <li><a href="#work" onclick="toggleMenu();">Réalisations</a></li>
     {% endif %}
     <li><a  href="{% url 'cv_page_fr' %}" onclick="toggleMenu();">CV</a></li>
+    {% if certificates %}
+    <li><a  href="{% url 'certificates' %}" onclick="toggleMenu();">Certificats</a></li>
+    {% endif %}
 
     <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
     <li>

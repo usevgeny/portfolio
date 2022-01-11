@@ -4,7 +4,7 @@ from django import forms
 # Register your models here.
 from django.utils.safestring import mark_safe
 
-from .models import Service,Work,AboutMe,Intro,Language,Skill,Experience,Interests,Cvdata,PrivateSettings,Education
+from .models import Service,Work,AboutMe,Intro,Language,Skill,Experience,Interests,Cvdata,PrivateSettings,Education, Certificate
 
 class AboutMeAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('myname',)
@@ -107,6 +107,20 @@ class InterestsAdmin(admin.ModelAdmin):
     save_as = True
 
 
+class CertificateAdmin(admin.ModelAdmin):
+    list_display = ('page_lang',
+                    'date_obtained',
+            'certificate_name',
+            'description',
+            'certificate_link',
+            'certificate_photo',)
+    fields = ('page_lang',
+            'certificate_name',
+              'date_obtained',
+            'description',
+            'certificate_link',
+            'certificate_photo',)
+    save_as = True
 
 class ExperienceAdmin(admin.ModelAdmin):
     list_display = (
@@ -155,6 +169,7 @@ admin.site.register(Intro,IntroAdmin)
 admin.site.register(Language,LanguageAdmin)
 admin.site.register(Skill,SkillAdmin)
 admin.site.register(Experience,ExperienceAdmin)
+admin.site.register(Certificate,CertificateAdmin)
 admin.site.register(Interests,InterestsAdmin)
 admin.site.register(Education,EducationAdmin)
 admin.site.register(Cvdata,CvdataAdmin)

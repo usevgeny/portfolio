@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Service, Work, AboutMe, Intro, Language, Skill, Experience, Interests, PrivateSettings, Cvdata, \
-    Education
+    Education, Certificate
 from django.http import HttpResponse
 from .forms import EmailForm, SendChatForm
 from django.core.mail import send_mail, EmailMessage
@@ -213,6 +213,9 @@ def index(request, template_to_be_rendered='portfolio_landing/ENG/index.html'):
 
     #return render(request, 'landing/home_glass.html', context)
 
+    certificates=False
+    if Certificate.objects.all():
+        certificates=True
 
     context = {"intro":intro,
                "aboutme":aboutme,
@@ -222,6 +225,7 @@ def index(request, template_to_be_rendered='portfolio_landing/ENG/index.html'):
                "smsform":smsform,
                "sms_errors":sms_errors,
                "telegram_status":telegram_status,
+               "certificates":certificates,
                }
     sms_logging = active_profile.sms_logging
     if sms_logging:
@@ -235,6 +239,34 @@ def index_fr(request):
 def index_rus(request):
     return index(request, template_to_be_rendered='portfolio_landing/RUS/index.html')
 
+
+def certificates(request, template_to_be_rendered='portfolio_landing/ENG/certificates.html'):
+
+    try:
+        detected_lang = detect_lang(request)
+        if detected_lang in available_languages:
+            page_language = detected_lang
+        else:
+            page_language = 'ENG'
+
+    except Exception as e:
+        print('LANG_DETECTION_EXCEPTION_OCCURED')
+        page_language = 'ENG'
+
+    try:
+        certificates=Certificate.objects.all().filter(page_lang=page_language).order_by('-pk')
+    except Exception as e:
+        certificates=[Certificate(page_lang="empty",
+                                certificate_name="empty",
+                                description="empty",
+                                certificate_link="empty",
+                                work_photo="empty",
+                                )]
+
+    context={
+        'certificates':certificates,
+    }
+    return render(request, template_to_be_rendered, context=context)
 
 
 def cv_page(request, template_to_be_rendered='portfolio_landing/ENG/CV.html'):
